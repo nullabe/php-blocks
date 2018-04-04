@@ -11,7 +11,7 @@ interface BlockchainInterface
 
     function getTransactionStack(): array;
 
-    function getLastBlock(): BlockInterface;
+    function getLastBlock(): ? BlockInterface;
 
     function addNewBlockToChain(): BlockchainInterface;
 

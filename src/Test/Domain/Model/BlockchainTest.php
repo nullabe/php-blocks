@@ -43,10 +43,10 @@ final class BlockchainTest extends TestCase
         $this->assertEquals([], $this->blockchain->getTransactionStack());
     }
 
-    public function testCanGetLastBlockOfChain(): void
+    public function testLastBlockOfChainIsNullAtInit(): void
     {
-        $this->assertInstanceOf(
-          Block::class,
+        $this->assertEquals(
+          null,
           $this->blockchain->getLastBlock()
         );
     }

@@ -20,7 +20,6 @@ final class Blockchain implements BlockchainInterface
     {
         $this->chain = [];
         $this->transactionStack = [];
-        $this->lastBlock = new Block();
     }
 
     public static function getInstance(): BlockchainInterface
@@ -42,7 +41,7 @@ final class Blockchain implements BlockchainInterface
         return $this->transactionStack;
     }
 
-    public function getLastBlock(): BlockInterface
+    public function getLastBlock(): ? BlockInterface
     {
         return $this->lastBlock;
     }
