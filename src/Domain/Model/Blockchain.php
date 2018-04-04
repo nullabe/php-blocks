@@ -7,6 +7,10 @@ final class Blockchain implements BlockchainInterface
 {
     private static $instance;
 
+    private $chain = array();
+
+    private $transactionStack = array();
+
     private function __construct()
     {
 
@@ -23,12 +27,12 @@ final class Blockchain implements BlockchainInterface
 
     function getChain(): array
     {
-        // TODO: Implement getChain() method.
+        return $this->chain;
     }
 
     function getTransactionStack(): array
     {
-        // TODO: Implement getTransactionStack() method.
+        return $this->transactionStack;
     }
 
     function getLastBlock(): BlockInterface

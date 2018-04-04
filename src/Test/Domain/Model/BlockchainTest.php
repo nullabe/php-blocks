@@ -15,5 +15,17 @@ final class BlockchainTest extends TestCase
             Blockchain::getInstance()
         );
     }
-    
+
+    public function testChainIsEmptyArrayAtInit()
+    {
+        $blockchain = Blockchain::getInstance();
+        $this->assertEquals([], $blockchain->getChain());
+    }
+
+    public function testTransactionStackIsEmptyArrayAtInit()
+    {
+        $blockchain = Blockchain::getInstance();
+        $this->assertEquals([], $blockchain->getTransactionStack());
+    }
+
 }
