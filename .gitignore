@@ -1,5 +1,9 @@
 ### JetBrains template
 .idea
 
+### Composer template
+composer.lock
+vendor
+
 ### php-blocks template
 blocks.chain
