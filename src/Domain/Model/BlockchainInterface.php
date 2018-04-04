@@ -5,7 +5,7 @@ namespace Nullabe\PhpBlocks\Domain\Model;
 
 interface BlockchainInterface
 {
-    static function getInstance(): self;
+    static function getInstance(): BlockchainInterface;
 
     function getChain(): array;
 
@@ -13,9 +13,9 @@ interface BlockchainInterface
 
     function getLastBlock(): BlockInterface;
 
-    function addNewBlockToChain(): self;
+    function addNewBlockToChain(): BlockchainInterface;
 
-    function addNewTransactionToStack(): self;
+    function addNewTransactionToStack(): BlockchainInterface;
 
     static function hashBlock(): string;
 
