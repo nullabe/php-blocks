@@ -5,7 +5,7 @@ namespace Nullabe\PhpBlocks\Tests\Domain\Model;
 
 use Nullabe\PhpBlocks\Domain\Model\Block;
 use Nullabe\PhpBlocks\Domain\Model\Blockchain;
-use Nullabe\PhpBlocks\Domain\Model\TransactionFactory;
+use Nullabe\PhpBlocks\Domain\Model\Factory\TransactionFactory;
 use PHPUnit\Framework\TestCase;
 
 final class BlockchainTest extends TestCase

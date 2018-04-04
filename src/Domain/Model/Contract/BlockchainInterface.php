@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Nullabe\PhpBlocks\Domain\Model;
+namespace Nullabe\PhpBlocks\Domain\Model\Contract;
 
 interface BlockchainInterface
 {

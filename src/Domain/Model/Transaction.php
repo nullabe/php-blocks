@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace Nullabe\PhpBlocks\Domain\Model;
 
+use Nullabe\PhpBlocks\Domain\Model\Contract\AddressInterface;
+use Nullabe\PhpBlocks\Domain\Model\Contract\TransactionInterface;
+
 final class Transaction implements TransactionInterface
 {
     private $sender;

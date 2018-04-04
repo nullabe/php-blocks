@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace Nullabe\PhpBlocks\Domain\Model;
 
+use Nullabe\PhpBlocks\Domain\Model\Contract\BlockchainInterface;
+use Nullabe\PhpBlocks\Domain\Model\Contract\BlockInterface;
+
 final class Blockchain implements BlockchainInterface
 {
     private static $instance;

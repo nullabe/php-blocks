@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Nullabe\PhpBlocks\Domain\Model;
 
+use Nullabe\PhpBlocks\Domain\Model\Contract\BlockInterface;
+
 final class Block implements BlockInterface
 {
     private $index;

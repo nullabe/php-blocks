@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Nullabe\PhpBlocks\Domain\Model;
 
-class Address implements AddressInterface
+use Nullabe\PhpBlocks\Domain\Model\Contract\AddressInterface;
+
+final class Address implements AddressInterface
 {
     private $id;
 
