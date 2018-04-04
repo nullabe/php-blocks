@@ -1,0 +1,25 @@
+{
+  "name": "nullabe/php-blocks",
+  "description": "A simple blockchain in PHP.",
+  "version": "0.x-dev",
+  "type": "library",
+  "licence": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Antoine Belluard",
+      "email": "abelluard@outlook.com",
+      "role": "Developer"
+    }
+  ],
+  "require" : {
+    "php" : "^7.1"
+  },
+  "require-dev" : {
+    "phpunit/phpunit": "^7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nullabe\\PhpBlocks\\": "src/"
+    }
+  }
+}
