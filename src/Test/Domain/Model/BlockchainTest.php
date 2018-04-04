@@ -3,29 +3,101 @@ declare(strict_types=1);
 
 namespace Nullabe\PhpBlocks\Tests\Domain\Model;
 
+use Nullabe\PhpBlocks\Domain\Model\Block;
 use Nullabe\PhpBlocks\Domain\Model\Blockchain;
+use Nullabe\PhpBlocks\Domain\Model\TransactionFactory;
 use PHPUnit\Framework\TestCase;
 
 final class BlockchainTest extends TestCase
 {
-    public function testCanGetBlockchainInstance()
+    public $blockchain;
+
+    public $transactionFactory;
+
+    public function __construct(
+      ?string $name = null,
+      array $data = [],
+      string $dataName = ''
+    ) {
+        parent::__construct($name, $data, $dataName);
+
+        $this->blockchain = Blockchain::getInstance();
+        $this->transactionFactory = new TransactionFactory();
+    }
+
+    public function testCanGetBlockchainInstance(): void
     {
         $this->assertInstanceOf(
             Blockchain::class,
-            Blockchain::getInstance()
+            $this->blockchain
         );
     }
 
-    public function testChainIsEmptyArrayAtInit()
+    public function testChainIsEmptyArrayAtInit(): void
     {
-        $blockchain = Blockchain::getInstance();
-        $this->assertEquals([], $blockchain->getChain());
+        $this->assertEquals([], $this->blockchain->getChain());
     }
 
-    public function testTransactionStackIsEmptyArrayAtInit()
+    public function testTransactionStackIsEmptyArrayAtInit(): void
     {
-        $blockchain = Blockchain::getInstance();
-        $this->assertEquals([], $blockchain->getTransactionStack());
+        $this->assertEquals([], $this->blockchain->getTransactionStack());
+    }
+
+    public function testCanGetLastBlockOfChain(): void
+    {
+        $this->assertInstanceOf(
+          Block::class,
+          $this->blockchain->getLastBlock()
+        );
+    }
+
+    public function testCanAddNewBlockToChain(): void
+    {
+        $this->blockchain->addNewBlockToChain();
+
+        $this->assertInstanceOf(
+          Block::class,
+          $this->blockchain->getChain()[0]
+        );
+    }
+
+    public function testCanAddOneNewTransactionToStack(): void
+    {
+        $transaction = call_user_func($this->transactionFactory,
+          'sender',
+          'receiver',
+          0);
+
+        $this->blockchain->addTransactionToStack($transaction);
+
+        $this->assertEquals(
+            $transaction,
+            $this->blockchain->getTransactionStack()[0]
+        );
+    }
+
+    public function testCanAddTwoNewTransactionToStack(): void
+    {
+        $transaction1 = call_user_func($this->transactionFactory,
+          'sender1',
+          'receiver1',
+          0);
+        $transaction2 = call_user_func($this->transactionFactory,
+          'sender2',
+          'receiver2',
+          0);
+
+        $this->blockchain->addTransactionToStack($transaction1);
+        $this->blockchain->addTransactionToStack($transaction2);
+
+        $this->assertEquals(
+            $transaction1,
+            $this->blockchain->getTransactionStack()[1]
+        );
+        $this->assertEquals(
+            $transaction2,
+            $this->blockchain->getTransactionStack()[2]
+        );
     }
 
 }

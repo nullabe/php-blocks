@@ -15,7 +15,7 @@ interface BlockchainInterface
 
     function addNewBlockToChain(): BlockchainInterface;
 
-    function addNewTransactionToStack(): BlockchainInterface;
+    function addTransactionToStack($transaction): BlockchainInterface;
 
     static function hashBlock(): string;
 

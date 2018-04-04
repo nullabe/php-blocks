@@ -7,13 +7,17 @@ final class Blockchain implements BlockchainInterface
 {
     private static $instance;
 
-    private $chain = array();
+    private $chain;
 
-    private $transactionStack = array();
+    private $transactionStack;
+
+    private $lastBlock;
 
     private function __construct()
     {
-
+        $this->chain = [];
+        $this->transactionStack = [];
+        $this->lastBlock = new Block();
     }
 
     public static function getInstance(): BlockchainInterface
@@ -25,32 +29,36 @@ final class Blockchain implements BlockchainInterface
         return self::$instance;
     }
 
-    function getChain(): array
+    public function getChain(): array
     {
         return $this->chain;
     }
 
-    function getTransactionStack(): array
+    public function getTransactionStack(): array
     {
         return $this->transactionStack;
     }
 
-    function getLastBlock(): BlockInterface
+    public function getLastBlock(): BlockInterface
     {
-        // TODO: Implement getLastBlock() method.
+        return $this->lastBlock;
     }
 
-    function addNewBlockToChain(): BlockchainInterface
+    public function addNewBlockToChain(): BlockchainInterface
     {
-        // TODO: Implement addNewBlockToChain() method.
+        array_push($this->chain, new Block());
+
+        return $this;
     }
 
-    function addNewTransactionToStack(): BlockchainInterface
+    public function addTransactionToStack($transaction): BlockchainInterface
     {
-        // TODO: Implement addNewTransactionToStack() method.
+        array_push($this->transactionStack, $transaction);
+
+        return $this;
     }
 
-    static function hashBlock(): string
+    public static function hashBlock(): string
     {
         // TODO: Implement hashBlock() method.
     }
