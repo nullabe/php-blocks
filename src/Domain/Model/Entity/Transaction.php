@@ -21,7 +21,8 @@ final class Transaction implements TransactionInterface
         $this->sender = $sender;
         $this->receiver = $receiver;
         $this->amount = $amount;
-        $this->timestamp = 0;
+
+        $this->timestamp = microtime(TRUE);
     }
 
     function getSender(): AddressInterface

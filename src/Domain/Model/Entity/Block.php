@@ -24,8 +24,7 @@ final class Block implements BlockInterface
         $this->proof = $proof;
         $this->previousHash = $previousHash;
 
-        $now = new \DateTime();
-        $this->timestamp = $now->getTimestamp();
+        $this->timestamp = microtime(TRUE);
     }
 
 
