@@ -33,57 +33,22 @@ final class BlockchainTest extends TestCase
         );
     }
 
-    public function testChainIsEmptyArrayAtInit(): void
+    public function testChainContainGenesisBlockAtInit(): void
     {
-        $this->assertEquals([], $this->blockchain->getChain());
+        $this->assertInstanceOf(Block::class, $this->blockchain->getChain()[0]);
+    }
+
+    public function testLastBlockIsGenesisBlockAtInit(): void
+    {
+        $this->assertEquals(
+          $this->blockchain->getChain()[0],
+          $this->blockchain->getLastBlock()
+        );
     }
 
     public function testTransactionStackIsEmptyArrayAtInit(): void
     {
         $this->assertEquals([], $this->blockchain->getTransactionStack());
-    }
-
-    public function testLastBlockOfChainIsNullAtInit(): void
-    {
-        $this->assertEquals(
-          null,
-          $this->blockchain->getLastBlock()
-        );
-    }
-
-    public function testCanAddNewBlockToChainAndThisBecomeLastBlockAndTransactionStackIsEmpty(): void
-    {
-        $this->blockchain->addNewBlockToChain(1);
-
-        $this->assertEquals(
-          $this->blockchain->getLastBlock(),
-          $this->blockchain->getChain()[0]
-        );
-        $this->assertEquals(
-          [],
-          $this->blockchain->getTransactionStack()
-        );
-    }
-
-    public function testCanAddOneNewTransactionToStack(): void
-    {
-        $transaction = call_user_func($this->transactionFactory,
-          'sender',
-          'receiver',
-          0);
-
-        // As Blochain object is a singleton, a block is already into the chain
-        // (see previous tests).
-        $this->assertEquals(
-          2,
-          $this->blockchain->addTransactionToStack($transaction)
-        );
-
-        $this->assertEquals(
-            $transaction,
-            $this->blockchain->getTransactionStack()[0]
-        );
-
     }
 
     public function testCanAddTwoNewTransactionToStack(): void
@@ -108,12 +73,8 @@ final class BlockchainTest extends TestCase
         );
 
         $this->assertEquals(
-            $transaction1,
-            $this->blockchain->getTransactionStack()[1]
-        );
-        $this->assertEquals(
-            $transaction2,
-            $this->blockchain->getTransactionStack()[2]
+            [$transaction1, $transaction2],
+            $this->blockchain->getTransactionStack()
         );
     }
 
