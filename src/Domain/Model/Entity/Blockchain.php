@@ -57,11 +57,13 @@ final class Blockchain implements BlockchainInterface
         return $this;
     }
 
-    public function addTransactionToStack($transaction): BlockchainInterface
+    public function addTransactionToStack($transaction): int
     {
         array_push($this->transactionStack, $transaction);
 
-        return $this;
+        $nextIndex = ($this->lastBlock instanceof Block) ? $this->lastBlock->getIndex() + 1 : 0;
+
+        return $nextIndex;
     }
 
     public static function hashBlock(): string

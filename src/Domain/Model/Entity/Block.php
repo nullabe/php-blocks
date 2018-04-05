@@ -17,6 +17,16 @@ final class Block implements BlockInterface
 
     private $previousHash;
 
+    public function __construct(int $index = 0, array $transaction = [], $proof = 0, $previousHash = null)
+    {
+        $this->index = $index;
+        $this->transactions = $transaction;
+        $this->proof = $proof;
+        $this->previousHash = $previousHash;
+
+        $this->timestamp = 0;
+    }
+
 
     public function getIndex(): int
     {
