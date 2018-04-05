@@ -46,9 +46,13 @@ final class Blockchain implements BlockchainInterface
         return $this->lastBlock;
     }
 
-    public function addNewBlockToChain(): BlockchainInterface
+    public function addNewBlockToChain($block = null): BlockchainInterface
     {
-        array_push($this->chain, new Block());
+        $block = $block ?? new Block();
+
+        array_push($this->chain, $block);
+
+        $this->lastBlock = $block;
 
         return $this;
     }

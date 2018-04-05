@@ -51,13 +51,19 @@ final class BlockchainTest extends TestCase
         );
     }
 
-    public function testCanAddNewBlockToChain(): void
+    public function testCanAddNewBlockToChainAndThisBecomeLastBlock(): void
     {
-        $this->blockchain->addNewBlockToChain();
+        $block = new Block();
+        $this->blockchain->addNewBlockToChain($block);
 
-        $this->assertInstanceOf(
-          Block::class,
+        $this->assertEquals(
+          $block,
           $this->blockchain->getChain()[0]
+        );
+
+        $this->assertEquals(
+          $block,
+          $this->blockchain->getLastBlock()
         );
     }
 

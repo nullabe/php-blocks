@@ -13,7 +13,7 @@ interface BlockchainInterface
 
     function getLastBlock(): ? BlockInterface;
 
-    function addNewBlockToChain(): BlockchainInterface;
+    function addNewBlockToChain($block = null): BlockchainInterface;
 
     function addTransactionToStack($transaction): BlockchainInterface;
 
