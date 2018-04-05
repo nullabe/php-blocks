@@ -19,7 +19,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Nullabe\\PhpBlocks\\": "src/"
+      "Nullabe\\PhpBlocks\\": "src/",
+      "Nullabe\\PhpBlocks\\Tests\\": "tests/"
     }
   }
 }
