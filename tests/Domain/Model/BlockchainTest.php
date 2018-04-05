@@ -78,4 +78,23 @@ final class BlockchainTest extends TestCase
         );
     }
 
+    public function testCanAddNewBlockWithStackedTransactionAndStackBecomeEmptyAfter()
+    {
+        $newBlock = $this->blockchain->addNewBlockToChain(1);
+        $chain = $this->blockchain->getChain();
+
+        $this->assertEquals(
+          $newBlock,
+          array_pop($chain)
+        );
+        $this->assertEquals(
+          $newBlock,
+          $this->blockchain->getLastBlock()
+        );
+        $this->assertEquals(
+          [],
+          $this->blockchain->getTransactionStack()
+        );
+    }
+
 }

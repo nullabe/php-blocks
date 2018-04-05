@@ -11,12 +11,12 @@ interface BlockchainInterface
 
     function getTransactionStack(): array;
 
-    function getLastBlock(): ? BlockInterface;
+    function getLastBlock(): BlockInterface;
 
     function addNewBlockToChain(int $proof, string $previousHash = NULL): BlockInterface;
 
     function addTransactionToStack($transaction): int;
 
-    static function hash(): string;
+    static function hashBlock(BlockInterface $block): string;
 
 }
