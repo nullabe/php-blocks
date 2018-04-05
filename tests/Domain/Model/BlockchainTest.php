@@ -51,19 +51,17 @@ final class BlockchainTest extends TestCase
         );
     }
 
-    public function testCanAddNewBlockToChainAndThisBecomeLastBlock(): void
+    public function testCanAddNewBlockToChainAndThisBecomeLastBlockAndTransactionStackIsEmpty(): void
     {
-        $block = new Block();
-        $this->blockchain->addNewBlockToChain($block);
+        $this->blockchain->addNewBlockToChain(1);
 
         $this->assertEquals(
-          $block,
+          $this->blockchain->getLastBlock(),
           $this->blockchain->getChain()[0]
         );
-
         $this->assertEquals(
-          $block,
-          $this->blockchain->getLastBlock()
+          [],
+          $this->blockchain->getTransactionStack()
         );
     }
 
@@ -77,7 +75,7 @@ final class BlockchainTest extends TestCase
         // As Blochain object is a singleton, a block is already into the chain
         // (see previous tests).
         $this->assertEquals(
-          1,
+          2,
           $this->blockchain->addTransactionToStack($transaction)
         );
 
@@ -101,11 +99,11 @@ final class BlockchainTest extends TestCase
 
 
         $this->assertEquals(
-          1,
+          2,
           $this->blockchain->addTransactionToStack($transaction1)
         );
         $this->assertEquals(
-          1,
+          2,
           $this->blockchain->addTransactionToStack($transaction2)
         );
 

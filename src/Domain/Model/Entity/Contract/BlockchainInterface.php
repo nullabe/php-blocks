@@ -13,10 +13,10 @@ interface BlockchainInterface
 
     function getLastBlock(): ? BlockInterface;
 
-    function addNewBlockToChain($block = null): BlockchainInterface;
+    function addNewBlockToChain(int $proof, string $previousHash = NULL): BlockInterface;
 
     function addTransactionToStack($transaction): int;
 
-    static function hashBlock(): string;
+    static function hash(): string;
 
 }

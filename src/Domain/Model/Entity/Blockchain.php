@@ -46,15 +46,17 @@ final class Blockchain implements BlockchainInterface
         return $this->lastBlock;
     }
 
-    public function addNewBlockToChain($block = null): BlockchainInterface
+    public function addNewBlockToChain(int $proof, string $previousHash = NULL): BlockInterface
     {
-        $block = $block ?? new Block();
+        $previousHash = $previousHash ?? self::hash();
+        $block = new Block(count($this->getChain()) + 1, $this->getTransactionStack(), $proof, $previousHash);
 
         array_push($this->chain, $block);
+        $this->transactionStack = [];
 
         $this->lastBlock = $block;
-
-        return $this;
+        
+        return $this->lastBlock;
     }
 
     public function addTransactionToStack($transaction): int
@@ -66,9 +68,9 @@ final class Blockchain implements BlockchainInterface
         return $nextIndex;
     }
 
-    public static function hashBlock(): string
+    public static function hash(): string
     {
-        // TODO: Implement hashBlock() method.
+        return "";
     }
 
 }

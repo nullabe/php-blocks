@@ -17,14 +17,15 @@ final class Block implements BlockInterface
 
     private $previousHash;
 
-    public function __construct(int $index = 0, array $transaction = [], $proof = 0, $previousHash = null)
+    public function __construct(int $index, array $transactions, $proof, $previousHash)
     {
         $this->index = $index;
-        $this->transactions = $transaction;
+        $this->transactions = $transactions;
         $this->proof = $proof;
         $this->previousHash = $previousHash;
 
-        $this->timestamp = 0;
+        $now = new \DateTime();
+        $this->timestamp = $now->getTimestamp();
     }
 
 
