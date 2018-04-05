@@ -7,7 +7,7 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Contract\AddressInterface;
 
 final class Address implements AddressInterface
 {
-    private $id;
+    public $id;
 
     public function __construct(string $id)
     {

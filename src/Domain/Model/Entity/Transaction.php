@@ -8,13 +8,13 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Contract\TransactionInterface;
 
 final class Transaction implements TransactionInterface
 {
-    private $sender;
+    public $sender;
 
-    private $receiver;
+    public $receiver;
 
-    private $amount;
+    public $amount;
 
-    private $timestamp;
+    public $timestamp;
 
     public function __construct(AddressInterface $sender, AddressInterface $receiver, float $amount)
     {

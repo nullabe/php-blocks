@@ -7,15 +7,15 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockInterface;
 
 final class Block implements BlockInterface
 {
-    private $index;
+    public $index;
 
-    private $timestamp;
+    public $timestamp;
 
-    private $transactions;
+    public $transactions;
 
-    private $proof;
+    public $proof;
 
-    private $previousHash;
+    public $previousHash;
 
     public function __construct(int $index, array $transactions, $proof, $previousHash)
     {

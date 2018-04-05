@@ -92,6 +92,11 @@ final class BlockchainTest extends TestCase
           $this->blockchain->getLastBlock()
         );
         $this->assertEquals(
+          $newBlock->getPreviousHash(),
+          Blockchain::hashBlock($chain[0])
+        );
+
+        $this->assertEquals(
           [],
           $this->blockchain->getTransactionStack()
         );

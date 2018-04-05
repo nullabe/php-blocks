@@ -8,6 +8,8 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockInterface;
 
 final class Blockchain implements BlockchainInterface
 {
+    const ALGO_USED_TO_HASH = "sha256";
+
     private static $instance;
 
     private $chain;
@@ -65,14 +67,19 @@ final class Blockchain implements BlockchainInterface
     {
         array_push($this->transactionStack, $transaction);
 
-        $nextIndex = ($this->lastBlock instanceof Block) ? $this->lastBlock->getIndex() + 1 : 0;
+        $nextIndex = $this->lastBlock->index + 1;
 
         return $nextIndex;
     }
 
     public static function hashBlock(BlockInterface $block): string
     {
-        return "";
+        $arrayBlock = json_decode(json_encode($block), TRUE);
+        ksort($arrayBlock);
+
+        $jsonBlock = json_encode($arrayBlock);
+
+        return hash(self::ALGO_USED_TO_HASH, $jsonBlock);
     }
 
 }
