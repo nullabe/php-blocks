@@ -1,9 +1,9 @@
 <?php
 
-namespace Nullabe\PhpBlocks\Domain\Model\Factory;
+namespace Nbe\PhpBlocks\Domain\Model\Factory;
 
-use Nullabe\PhpBlocks\Domain\Model\Address;
-use Nullabe\PhpBlocks\Domain\Model\Transaction;
+use Nbe\PhpBlocks\Domain\Model\Entity\Address;
+use Nbe\PhpBlocks\Domain\Model\Entity\Transaction;
 
 class TransactionFactory
 {

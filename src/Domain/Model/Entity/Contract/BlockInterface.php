@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Nullabe\PhpBlocks\Domain\Model\Contract;
+namespace Nbe\PhpBlocks\Domain\Model\Entity\Contract;
 
 interface BlockInterface
 {

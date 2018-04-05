@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Nullabe\PhpBlocks\Domain\Model;
+namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
-use Nullabe\PhpBlocks\Domain\Model\Contract\BlockInterface;
+use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockInterface;
 
 final class Block implements BlockInterface
 {

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Nullabe\PhpBlocks\Domain\Model;
+namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
-use Nullabe\PhpBlocks\Domain\Model\Contract\AddressInterface;
-use Nullabe\PhpBlocks\Domain\Model\Contract\TransactionInterface;
+use Nbe\PhpBlocks\Domain\Model\Entity\Contract\AddressInterface;
+use Nbe\PhpBlocks\Domain\Model\Entity\Contract\TransactionInterface;
 
 final class Transaction implements TransactionInterface
 {

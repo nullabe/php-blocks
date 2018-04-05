@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Nullabe\PhpBlocks\Domain\Model;
+namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
-use Nullabe\PhpBlocks\Domain\Model\Contract\AddressInterface;
+use Nbe\PhpBlocks\Domain\Model\Entity\Contract\AddressInterface;
 
 final class Address implements AddressInterface
 {

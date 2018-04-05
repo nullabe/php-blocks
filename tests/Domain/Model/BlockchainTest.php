@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Nullabe\PhpBlocks\Tests\Domain\Model;
+namespace Nbe\PhpBlocks\Tests\Domain\Model;
 
-use Nullabe\PhpBlocks\Domain\Model\Block;
-use Nullabe\PhpBlocks\Domain\Model\Blockchain;
-use Nullabe\PhpBlocks\Domain\Model\Factory\TransactionFactory;
+use Nbe\PhpBlocks\Domain\Model\Entity\Block;
+use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
+use Nbe\PhpBlocks\Domain\Model\Factory\TransactionFactory;
 use PHPUnit\Framework\TestCase;
 
 final class BlockchainTest extends TestCase
