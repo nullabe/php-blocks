@@ -5,14 +5,14 @@ namespace Nbe\PhpBlocks\Domain\Model\Entity\Contract;
 
 interface BlockInterface
 {
-    function getIndex(): int;
+    public function getIndex(): int;
 
-    function getTimestamp(): float;
+    public function getTimestamp(): float;
 
-    function getTransactions(): array;
+    public function getTransactions(): array;
 
-    function getProof(): int;
+    public function getProof(): int;
 
-    function getPreviousHash(): string;
+    public function getPreviousHash(): string;
 
 }

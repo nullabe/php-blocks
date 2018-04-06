@@ -5,11 +5,10 @@ namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
 use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockchainInterface;
 use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockInterface;
+use Nbe\PhpBlocks\Domain\Model\Entity\Contract\TransactionInterface;
 
 final class Blockchain implements BlockchainInterface
 {
-    const ALGO_USED_TO_HASH = "sha256";
-
     private static $instance;
 
     private $chain;
@@ -23,7 +22,8 @@ final class Blockchain implements BlockchainInterface
         $this->chain = [];
         $this->transactionStack = [];
 
-        $this->addNewBlockToChain(100, "");
+        $genesisBlock = new Block(1, [], 100, "1");
+        $this->appendBlockToChain($genesisBlock);
     }
 
     public static function getInstance(): BlockchainInterface
@@ -50,36 +50,26 @@ final class Blockchain implements BlockchainInterface
         return $this->lastBlock;
     }
 
-    public function addNewBlockToChain(int $proof, string $previousHash = NULL): BlockInterface
+    public function appendBlockToChain(BlockInterface $block): BlockInterface
     {
-        $previousHash = $previousHash ?? self::hashBlock($this->lastBlock);
-        $block = new Block(count($this->getChain()) + 1, $this->getTransactionStack(), $proof, $previousHash);
-
         array_push($this->chain, $block);
         $this->lastBlock = $block;
 
-        $this->transactionStack = [];
-
-        return $this->lastBlock;
+        return $block;
     }
 
-    public function addTransactionToStack($transaction): int
+    public function appendTransactionToStack(TransactionInterface $transaction): TransactionInterface
     {
         array_push($this->transactionStack, $transaction);
 
-        $nextIndex = $this->lastBlock->index + 1;
-
-        return $nextIndex;
+        return $transaction;
     }
 
-    public static function hashBlock(BlockInterface $block): string
+    public function resetTransactionStack(): BlockchainInterface
     {
-        $arrayBlock = json_decode(json_encode($block), TRUE);
-        ksort($arrayBlock);
+        $this->transactionStack = [];
 
-        $jsonBlock = json_encode($arrayBlock);
-
-        return hash(self::ALGO_USED_TO_HASH, $jsonBlock);
+        return $this;
     }
 
 }

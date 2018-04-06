@@ -5,12 +5,12 @@ namespace Nbe\PhpBlocks\Domain\Model\Entity\Contract;
 
 interface TransactionInterface
 {
-    function getSender(): AddressInterface;
+    public function getSender(): AddressInterface;
 
-    function getReceiver(): AddressInterface;
+    public function getReceiver(): AddressInterface;
 
-    function getAmount(): float;
+    public function getAmount(): float;
 
-    function getTimestamp(): float;
+    public function getTimestamp(): float;
 
 }

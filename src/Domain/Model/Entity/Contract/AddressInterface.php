@@ -5,6 +5,6 @@ namespace Nbe\PhpBlocks\Domain\Model\Entity\Contract;
 
 interface AddressInterface
 {
-    function getId(): string;
+    public function getId(): string;
 
 }

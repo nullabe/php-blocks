@@ -7,16 +7,16 @@ interface BlockchainInterface
 {
     static function getInstance(): BlockchainInterface;
 
-    function getChain(): array;
+    public function getChain(): array;
 
-    function getTransactionStack(): array;
+    public function getTransactionStack(): array;
 
-    function getLastBlock(): BlockInterface;
+    public function getLastBlock(): BlockInterface;
 
-    function addNewBlockToChain(int $proof, string $previousHash = NULL): BlockInterface;
+    public function appendBlockToChain(BlockInterface $block): BlockInterface;
 
-    function addTransactionToStack($transaction): int;
+    public function appendTransactionToStack(TransactionInterface $transaction): TransactionInterface;
 
-    static function hashBlock(BlockInterface $block): string;
+    public function resetTransactionStack(): BlockchainInterface;
 
 }
