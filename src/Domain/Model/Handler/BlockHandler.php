@@ -8,7 +8,7 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockchainInterface;
 use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockInterface;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\BlockHandlerInterface;
 
-class BlockHandler implements BlockHandlerInterface
+final class BlockHandler implements BlockHandlerInterface
 {
     private $blockchain;
 

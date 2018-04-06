@@ -6,7 +6,7 @@ namespace Nbe\PhpBlocks\Tests\Domain\Model\Entity;
 use Nbe\PhpBlocks\Domain\Model\Entity\Block;
 use PHPUnit\Framework\TestCase;
 
-class BlockTest extends TestCase
+final class BlockTest extends TestCase
 {
     public function testCanInstantiateBlock(): void
     {

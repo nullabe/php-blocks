@@ -5,7 +5,7 @@ namespace Nbe\PhpBlocks\Domain\Model\Factory;
 use Nbe\PhpBlocks\Domain\Model\Entity\Address;
 use Nbe\PhpBlocks\Domain\Model\Entity\Transaction;
 
-class TransactionFactory
+final class TransactionFactory
 {
     public function __invoke(string $sender_id, string $receiver_id, float $amount): Transaction
     {

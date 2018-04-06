@@ -6,7 +6,7 @@ namespace Nbe\PhpBlocks\Tests\Domain\Model\Entity;
 use Nbe\PhpBlocks\Domain\Model\Entity\Address;
 use PHPUnit\Framework\TestCase;
 
-class AddressTest extends TestCase
+final class AddressTest extends TestCase
 {
     public function testCanInstantiateAddress(): void
     {

@@ -6,7 +6,7 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockchainInterface;
 use Nbe\PhpBlocks\Domain\Model\Entity\Contract\TransactionInterface;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\TransactionStackHandlerInterface;
 
-class TransactionStackHandler implements TransactionStackHandlerInterface
+final class TransactionStackHandler implements TransactionStackHandlerInterface
 {
     private $blockchain;
 

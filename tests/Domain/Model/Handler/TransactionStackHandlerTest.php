@@ -8,7 +8,7 @@ use Nbe\PhpBlocks\Domain\Model\Factory\TransactionFactory;
 use Nbe\PhpBlocks\Domain\Model\Handler\TransactionStackHandler;
 use PHPUnit\Framework\TestCase;
 
-class TransactionStackHandlerTest extends TestCase
+final class TransactionStackHandlerTest extends TestCase
 {
     public $blockchain;
 

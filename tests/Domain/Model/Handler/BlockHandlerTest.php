@@ -9,7 +9,7 @@ use Nbe\PhpBlocks\Domain\Model\Handler\BlockHandler;
 use Nbe\PhpBlocks\Domain\Model\Handler\BlockHashHandler;
 use PHPUnit\Framework\TestCase;
 
-class BlockHandlerTest extends TestCase
+final class BlockHandlerTest extends TestCase
 {
     public $blockchain;
 

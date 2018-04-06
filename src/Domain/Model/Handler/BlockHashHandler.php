@@ -6,7 +6,7 @@ namespace Nbe\PhpBlocks\Domain\Model\Handler;
 use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockInterface;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\BlockHashHandlerInterface;
 
-class BlockHashHandler implements BlockHashHandlerInterface
+final class BlockHashHandler implements BlockHashHandlerInterface
 {
     const ALGO_USED_TO_HASH = "sha256";
 
