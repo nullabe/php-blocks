@@ -19,7 +19,22 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
 
     public function proofOfWork(int $lastProof): int
     {
-        return $lastProof;
+        $proof = 0;
+        $hash = "";
+
+        while(!self::validateProof($hash)){
+            $hash = $this->hashByTwoIntMultiplication($lastProof, $proof++);
+        }
+
+        return $proof;
+    }
+
+    public function hashByTwoIntMultiplication(int $x, int $y): string
+    {
+        $result = $x * $y;
+        $encodedString = base64_encode((string)$result);
+
+        return hash(BlockHashHandler::ALGO_USED_TO_HASH, $encodedString);
     }
 
     public static function validateProof(string $hash): bool

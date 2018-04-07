@@ -15,9 +15,9 @@ final class BlockHashHandler implements BlockHashHandlerInterface
         $arrayBlock = json_decode(json_encode($block), TRUE);
         ksort($arrayBlock);
 
-        $jsonBlock = json_encode($arrayBlock);
+        $jsonBlockEncoded = base64_encode(json_encode($arrayBlock));
 
-        return hash(self::ALGO_USED_TO_HASH, $jsonBlock);
+        return hash(self::ALGO_USED_TO_HASH, $jsonBlockEncoded);
     }
 
 }

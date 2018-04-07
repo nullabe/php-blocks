@@ -33,19 +33,37 @@ class ProofOfWorkHandlerTest extends TestCase
         );
     }
 
-    public function testProofOfWorkReturnInt(): void
-    {
-        $this->assertEquals(
-          TRUE,
-          is_int($this->proofOfWorkHandler->proofOfWork(0))
-        );
-    }
-
     public function testProofOfWorkHandlerCanValidateThatHashHas4Leading0(): void
     {
         $this->assertEquals(
           TRUE,
           $this->proofOfWorkHandler::validateProof('00001')
+        );
+    }
+
+    public function testCanMakeHashByMultiplyingTwoInt(): void
+    {
+        $x = 1;
+        $y = 2;
+
+        $this->assertEquals(
+          TRUE,
+            is_string($this->proofOfWorkHandler->hashByTwoIntMultiplication($x, $y))
+        );
+    }
+
+    public function testCanFindNewValidProofByTellLastOneIs100(): void
+    {
+        $lastProof = 100;
+        $newProof = $this->proofOfWorkHandler->proofOfWork($lastProof);
+
+        $this->assertEquals(
+          TRUE,
+          is_int($newProof)
+        );
+        $this->assertEquals(
+          TRUE,
+          ($lastProof !== $newProof)
         );
     }
 
