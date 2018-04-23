@@ -1,0 +1,28 @@
+version: "3"
+services:
+
+  phpblocks_websrv_nginx:
+    container_name: phpblocks_websrv_nginx
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    networks:
+      - bridge
+    volumes:
+      - ./config/nginx/vhosts/phpblocks-api.local.conf:/etc/nginx/conf.d/phpblocks-api.local.conf
+
+  phpblocks_api:
+    container_name: phpblocks_api
+    build:
+      context: .
+      dockerfile: ./config/docker/php/Dockerfile
+      args:
+        - UID=1000
+        - GID=1000
+    networks:
+      - bridge
+    volumes:
+      - .:/srv/phpblocks_api
+
+networks:
+  bridge:
