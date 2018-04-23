@@ -4,7 +4,6 @@
         backupGlobals="true"
         cacheTokens="false"
         colors="true"
-        printerClass="PHPUnit_TextUI_ResultPrinter"
         testSuiteLoaderFile="PHPUnit_Runner_StandardTestSuiteLoader"
         verbose="true">
 

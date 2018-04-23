@@ -3,9 +3,7 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\AddressInterface;
-
-final class Address implements AddressInterface
+final class Address
 {
     public $id;
 

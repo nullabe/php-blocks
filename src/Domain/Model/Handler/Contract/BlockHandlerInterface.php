@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Handler\Contract;
 
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockInterface;
+use Nbe\PhpBlocks\Domain\Model\Entity\Block;
 
 interface BlockHandlerInterface
 {
-    function addNewBlockToChain(int $proof, string $previousHash = NULL): BlockInterface;
+    function addNewBlockToChain(int $proof, string $previousHash = NULL): Block;
 
 }

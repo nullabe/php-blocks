@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Api;
 
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\TransactionInterface;
+use Nbe\PhpBlocks\Domain\Model\Entity\Transaction;
 
 interface PostNewTransactionInterface
 {
-    public function postNewTransaction(): TransactionInterface;
+    public function postNewTransaction(): Transaction;
 
 }

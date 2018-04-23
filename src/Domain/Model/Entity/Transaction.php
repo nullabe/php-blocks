@@ -3,10 +3,7 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\AddressInterface;
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\TransactionInterface;
-
-final class Transaction implements TransactionInterface
+final class Transaction
 {
     public $sender;
 
@@ -16,7 +13,7 @@ final class Transaction implements TransactionInterface
 
     public $timestamp;
 
-    public function __construct(AddressInterface $sender, AddressInterface $receiver, float $amount)
+    public function __construct(Address $sender, Address $receiver, float $amount)
     {
         $this->sender = $sender;
         $this->receiver = $receiver;
@@ -25,12 +22,12 @@ final class Transaction implements TransactionInterface
         $this->timestamp = microtime(TRUE);
     }
 
-    function getSender(): AddressInterface
+    function getSender(): Address
     {
         return $this->sender;
     }
 
-    function getReceiver(): AddressInterface
+    function getReceiver(): Address
     {
         return $this->receiver;
     }

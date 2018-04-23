@@ -3,11 +3,7 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockchainInterface;
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockInterface;
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\TransactionInterface;
-
-final class Blockchain implements BlockchainInterface
+final class Blockchain
 {
     private static $instance;
 
@@ -26,7 +22,7 @@ final class Blockchain implements BlockchainInterface
         $this->appendBlockToChain($genesisBlock);
     }
 
-    public static function getInstance(): BlockchainInterface
+    public static function getInstance(): Blockchain
     {
         if(!isset(self::$instance)) {
             self::$instance = new self();
@@ -45,12 +41,12 @@ final class Blockchain implements BlockchainInterface
         return $this->transactionStack;
     }
 
-    public function getLastBlock(): BlockInterface
+    public function getLastBlock(): Block
     {
         return $this->lastBlock;
     }
 
-    public function appendBlockToChain(BlockInterface $block): BlockInterface
+    public function appendBlockToChain(Block $block): Block
     {
         array_push($this->chain, $block);
         $this->lastBlock = $block;
@@ -58,14 +54,14 @@ final class Blockchain implements BlockchainInterface
         return $block;
     }
 
-    public function appendTransactionToStack(TransactionInterface $transaction): TransactionInterface
+    public function appendTransactionToStack(Transaction $transaction): Transaction
     {
         array_push($this->transactionStack, $transaction);
 
         return $transaction;
     }
 
-    public function resetTransactionStack(): BlockchainInterface
+    public function resetTransactionStack(): Blockchain
     {
         $this->transactionStack = [];
 

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Handler;
 
-use Nbe\PhpBlocks\Domain\Model\Entity\Contract\BlockchainInterface;
+use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\ProofOfWorkHandlerInterface;
 
 class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
@@ -12,7 +12,7 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
 
     private $blockchain;
 
-    public function __construct(BlockchainInterface $blockchain)
+    public function __construct(Blockchain $blockchain)
     {
         $this->blockchain = $blockchain;
     }
