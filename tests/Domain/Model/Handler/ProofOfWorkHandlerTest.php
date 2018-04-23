@@ -7,10 +7,19 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 use Nbe\PhpBlocks\Domain\Model\Handler\ProofOfWorkHandler;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * ProofOfWorkHandlerTest class
+ */
 class ProofOfWorkHandlerTest extends TestCase
 {
+    /**
+     * @var Blockchain
+     */
     public $blockchain;
 
+    /**
+     * @var ProofOfWorkHandler
+     */
     public $proofOfWorkHandler;
 
     public function __construct(

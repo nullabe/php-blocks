@@ -8,12 +8,24 @@ use Nbe\PhpBlocks\Domain\Model\Factory\TransactionFactory;
 use Nbe\PhpBlocks\Domain\Model\Handler\TransactionStackHandler;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * TransactionStackHandlerTest class
+ */
 final class TransactionStackHandlerTest extends TestCase
 {
+    /**
+     * @var Blockchain
+     */
     public $blockchain;
 
+    /**
+     * @var TransactionFactory
+     */
     public $transactionFactory;
 
+    /**
+     * @var TransactionStackHandler
+     */
     public $transactionStackHandler;
 
     public function __construct(

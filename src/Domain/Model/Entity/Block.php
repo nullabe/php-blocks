@@ -3,19 +3,50 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
+/**
+ * Block class
+ */
 final class Block
 {
-    public $index;
+    /**
+     * @var int
+     */
+    private $index;
 
-    public $timestamp;
+    /**
+     * @var float
+     */
+    private $timestamp;
 
-    public $transactions;
+    /**
+     * @var array
+     */
+    private $transactions;
 
-    public $proof;
+    /**
+     * @var int
+     */
+    private $proof;
 
-    public $previousHash;
+    /**
+     * @var string
+     */
+    private $hash;
 
-    public function __construct(int $index, array $transactions, $proof, $previousHash)
+    /**
+     * @var string
+     */
+    private $previousHash;
+
+    /**
+     * Constructor
+     *
+     * @param integer $index
+     * @param array $transactions
+     * @param integer $proof
+     * @param string $previousHash
+     */
+    public function __construct(int $index, array $transactions, int $proof, string $previousHash)
     {
         $this->index = $index;
         $this->transactions = $transactions;
@@ -23,29 +54,63 @@ final class Block
         $this->previousHash = $previousHash;
 
         $this->timestamp = microtime(TRUE);
+        $this->hash = '';
     }
 
-
+    /**
+     * @return integer
+     */
     public function getIndex(): int
     {
         return $this->index;
     }
 
+    /**
+     * @return float
+     */
     public function getTimestamp(): float
     {
         return $this->timestamp;
     }
 
+    /**
+     * @return array
+     */
     public function getTransactions(): array
     {
         return $this->transactions;
     }
 
+    /**
+     * @return integer
+     */
     public function getProof(): int
     {
         return $this->proof;
     }
 
+    /**
+     * @return string
+     */
+    public function getHash(): string
+    {
+        return $this->hash;
+    }
+
+    /**
+     * @param string $hash
+     * @return Block
+     */
+    public function setHash(string $hash): Block
+    {
+        $this->hash = $hash;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getPreviousHash(): string
     {
         return $this->previousHash;

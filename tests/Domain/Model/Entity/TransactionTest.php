@@ -7,6 +7,9 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Address;
 use Nbe\PhpBlocks\Domain\Model\Entity\Transaction;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * TransactionTest class
+ */
 final class TransactionTest extends TestCase
 {
     public function testCanInstantiateTransaction(): void

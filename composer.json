@@ -3,7 +3,7 @@
   "description": "A simple blockchain in PHP.",
   "version": "0.x-dev",
   "type": "library",
-  "licence": "GPL-3.0-or-later",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "Antoine Belluard",

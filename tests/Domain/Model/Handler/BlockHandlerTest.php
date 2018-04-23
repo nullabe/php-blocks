@@ -9,12 +9,24 @@ use Nbe\PhpBlocks\Domain\Model\Handler\BlockHandler;
 use Nbe\PhpBlocks\Domain\Model\Handler\BlockHashHandler;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * BlockHandlerTest class
+ */
 final class BlockHandlerTest extends TestCase
 {
+    /**
+     * @var Blockchain
+     */
     public $blockchain;
 
+    /**
+     * @var TransactionFactory
+     */
     public $transactionFactory;
 
+    /**
+     * @var BlockHandler
+     */
     public $blockHandler;
 
     public function __construct(
@@ -32,6 +44,7 @@ final class BlockHandlerTest extends TestCase
 
     public function testCanAddNewBlockToChain(): void
     {
+        $prevBlock = $this->blockchain->getLastBlock();
         $newBlock = $this->blockHandler->addNewBlockToChain(100);
         $chain = $this->blockchain->getChain();
 
@@ -44,10 +57,9 @@ final class BlockHandlerTest extends TestCase
           $this->blockchain->getLastBlock()
         );
 
-        $previousBlockPosition = count($chain) - 1;
         $this->assertEquals(
           $newBlock->getPreviousHash(),
-          BlockHashHandler::hashBlock($chain[$previousBlockPosition])
+          $prevBlock->getHash()
         );
 
         $this->assertEquals(

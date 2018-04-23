@@ -8,8 +8,14 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 use Nbe\PhpBlocks\Domain\Model\Factory\TransactionFactory;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * BlockchainTest class
+ */
 final class BlockchainTest extends TestCase
 {
+    /**
+     * @var Blockchain
+     */
     public $blockchain;
 
     public function __construct(

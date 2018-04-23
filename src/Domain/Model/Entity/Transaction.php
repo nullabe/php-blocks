@@ -3,16 +3,43 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
+/**
+ * Transaction class
+ */
 final class Transaction
 {
-    public $sender;
+    /**
+     * @var string
+     */
+    private $hash; 
 
-    public $receiver;
+    /**
+     * @var Address
+     */
+    private $sender;
 
-    public $amount;
+    /**
+     * @var Address
+     */
+    private $receiver;
 
-    public $timestamp;
+    /**
+     * @var float
+     */
+    private $amount;
 
+    /**
+     * @var float
+     */
+    private $timestamp;
+
+    /**
+     * Custructor
+     *
+     * @param Address $sender
+     * @param Address $receiver
+     * @param float $amount
+     */
     public function __construct(Address $sender, Address $receiver, float $amount)
     {
         $this->sender = $sender;
@@ -20,26 +47,58 @@ final class Transaction
         $this->amount = $amount;
 
         $this->timestamp = microtime(TRUE);
+        $this->hash = null;
     }
 
-    function getSender(): Address
+    /**
+     * @return Address
+     */
+    public function getSender(): Address
     {
         return $this->sender;
     }
 
-    function getReceiver(): Address
+    /**
+     * @return Address
+     */
+    public function getReceiver(): Address
     {
         return $this->receiver;
     }
 
-    function getAmount(): float
+    /**
+     * @return float
+     */
+    public function getAmount(): float
     {
         return $this->amount;
     }
 
-    function getTimestamp(): float
+    /**
+     * @return float
+     */
+    public function getTimestamp(): float
     {
         return $this->timestamp;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHash(): string
+    {
+        return $this->hash;
+    }
+
+    /**
+     * @param string $hash
+     * @return Transaction
+     */
+    public function setHash(string $hash): Transaction
+    {
+        $this->hash = $hash;
+
+        return $this;
     }
 
 }

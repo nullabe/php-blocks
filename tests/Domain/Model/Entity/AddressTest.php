@@ -6,6 +6,9 @@ namespace Nbe\PhpBlocks\Tests\Domain\Model\Entity;
 use Nbe\PhpBlocks\Domain\Model\Entity\Address;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * AddressTest class
+ */
 final class AddressTest extends TestCase
 {
     public function testCanInstantiateAddress(): void
@@ -16,13 +19,13 @@ final class AddressTest extends TestCase
         );
     }
 
-    public function testCanGetAddressId(): void
+    public function testCanGetAddressHash(): void
     {
         $address = new Address("1");
 
         $this->assertEquals(
           "1",
-          $address->getId()
+          $address->getHash()
         );
     }
 

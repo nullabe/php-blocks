@@ -3,9 +3,13 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Tests\Domain\Model\Entity;
 
-use Nbe\PhpBlocks\Domain\Model\Entity\Block;
 use PHPUnit\Framework\TestCase;
+use Nbe\PhpBlocks\Domain\Model\Entity\Block;
+use Nbe\PhpBlocks\Domain\Model\Handler\BlockHashHandler;
 
+/**
+ * Blocktest class
+ */
 final class BlockTest extends TestCase
 {
     public function testCanInstantiateBlock(): void
@@ -62,6 +66,23 @@ final class BlockTest extends TestCase
         $this->assertEquals(
           "azerty",
           $block->getPreviousHash()
+        );
+    }
+
+    public function testCanGetHashOfBlock(): void
+    {
+        $block = new Block(1, [], 100, "");
+        
+        $blockHash = BlockHashHandler::hashBlock($block);
+        $block->setHash($blockHash);
+
+        $this->assertEquals(
+            $blockHash,
+            BlockHashHandler::hashBlock($block)
+        );
+        $this->assertEquals(
+            $blockHash,
+            $block->getHash()
         );
     }
 

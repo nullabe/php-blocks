@@ -3,18 +3,32 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
+/**
+ * Address class
+ */
 final class Address
 {
-    public $id;
+    /**
+     * @var string
+     */
+    private $hash;
 
-    public function __construct(string $id)
+    /**
+     * Constructor
+     *
+     * @param string $hash
+     */
+    public function __construct(string $hash)
     {
-        $this->id = $id;
+        $this->hash = $hash;
     }
 
-    function getId(): string
+    /**
+     * @return string
+     */
+    public function getHash(): string
     {
-        return $this->id;
+        return $this->hash;
     }
 
 }

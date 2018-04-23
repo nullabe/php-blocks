@@ -3,21 +3,25 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Handler;
 
+use Nbe\PhpBlocks\Domain\Config\Hash;
+use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
 use Nbe\PhpBlocks\Domain\Model\Entity\Block;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\BlockHashHandlerInterface;
 
+/**
+ * BlockHashHandler class
+ */
 final class BlockHashHandler implements BlockHashHandlerInterface
 {
-    const ALGO_USED_TO_HASH = "sha256";
-
+    /**
+     * @param Block $block
+     * @return string
+     */
     public static function hashBlock(Block $block): string
     {
-        $arrayBlock = json_decode(json_encode($block), TRUE);
-        ksort($arrayBlock);
+        $stringToHash = (string) $block->getTimestamp() . (string) $block->getProof() . ProofOfWork::DIFFICULTY;
 
-        $jsonBlockEncoded = base64_encode(json_encode($arrayBlock));
-
-        return hash(self::ALGO_USED_TO_HASH, $jsonBlockEncoded);
+        return hash(Hash::ALGO, hash(Hash::ALGO, base64_encode($stringToHash)));
     }
 
 }

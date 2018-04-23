@@ -9,18 +9,28 @@ use Nbe\PhpBlocks\Domain\Model\Handler\Contract\TransactionStackHandlerInterface
 
 final class TransactionStackHandler implements TransactionStackHandlerInterface
 {
+    /**
+     * @var Blockchain
+     */
     private $blockchain;
 
+    /**
+     * @param Blockchain $blockchain
+     */
     public function __construct(Blockchain $blockchain)
     {
         $this->blockchain = $blockchain;
     }
 
+    /**
+     * @param Transaction $transaction
+     * @return integer
+     */
     public function addTransactionToStack(Transaction $transaction): int
     {
         $this->blockchain->appendTransactionToStack($transaction);
 
-        $nextIndex = $this->blockchain->getlastBlock()->getIndex() + 1;
+        $nextIndex = $this->blockchain->getNextIndex();
 
         return $nextIndex;
     }
