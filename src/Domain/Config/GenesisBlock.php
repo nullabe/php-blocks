@@ -12,6 +12,8 @@ final class GenesisBlock
 
     const PROOF = 100;
 
-    const PREVIOUS_HASH = "1";
+    const HASH = "GENESISBLOCK";
+
+    const PREVIOUS_HASH = "NA";
 
 }
