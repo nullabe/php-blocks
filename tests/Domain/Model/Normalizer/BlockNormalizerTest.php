@@ -16,17 +16,17 @@ final class BlockNormalizerTest extends TestCase
 {
     public function testBlockCanBeNormalized()
     {
-        $block = new Block(1, [], 100);
+        $block = new Block(1, [], "TEST");
         $block = BlockHashHandler::hashBlock($block);
 
         $this->assertEquals(
             [
-                'index'         => $block->getIndex(),
+                'index'         => 1,
                 'timestamp'     => $block->getTimestamp(),
                 'transactions'  => [],
                 'proof'         => $block->getProof(),
                 'hash'          => $block->getHash(), 
-                'previousHash'  => $block->getPreviousHash(),
+                'previousHash'  => "TEST",
             ],
             BlockNormalizer::normalize($block)
         );
@@ -37,17 +37,17 @@ final class BlockNormalizerTest extends TestCase
         $transactionFactory = new TransactionFactory();
         $transaction = $transactionFactory('sender', 'receiver', 0);
 
-        $block = new Block(1, [$transaction], 100);
+        $block = new Block(1, [$transaction], "TEST");
         $block = BlockHashHandler::hashBlock($block);
 
         $this->assertEquals(
             [
-                'index'         => $block->getIndex(),
+                'index'         => 1,
                 'timestamp'     => $block->getTimestamp(),
                 'transactions'  => [TransactionNormalizer::normalize($transaction)],
                 'proof'         => $block->getProof(),
                 'hash'          => $block->getHash(), 
-                'previousHash'  => $block->getPreviousHash(),
+                'previousHash'  => "TEST",
             ],
             BlockNormalizer::normalize($block)
         );
