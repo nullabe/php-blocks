@@ -3,9 +3,10 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Tests\Domain\Model\Handler;
 
+use PHPUnit\Framework\TestCase;
+use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
 use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 use Nbe\PhpBlocks\Domain\Model\Handler\ProofOfWorkHandler;
-use PHPUnit\Framework\TestCase;
 
 /**
  * ProofOfWorkHandlerTest class
@@ -42,29 +43,27 @@ class ProofOfWorkHandlerTest extends TestCase
         );
     }
 
-    public function testProofOfWorkHandlerCanValidateThatHashHas4Leading0(): void
+    public function testProofOfWorkHandlerCanValidateThatHashHasDifficultyLeading(): void
     {
         $this->assertEquals(
           TRUE,
-          $this->proofOfWorkHandler::validateProof('00001')
+          $this->proofOfWorkHandler::validateProof(ProofOfWork::DIFFICULTY . '1')
         );
     }
 
-    public function testCanMakeHashByMultiplyingTwoInt(): void
+    public function testProofOfWorkHandlerCanValidateThatHashHasNotDifficultyLeading(): void
     {
-        $x = 1;
-        $y = 2;
-
         $this->assertEquals(
-          TRUE,
-            is_string($this->proofOfWorkHandler->hashByTwoIntMultiplication($x, $y))
+          FALSE,
+          $this->proofOfWorkHandler::validateProof('1')
         );
     }
 
     public function testCanFindNewValidProofByTellLastOneIs100(): void
     {
         $lastProof = 100;
-        $newProof = $this->proofOfWorkHandler->proofOfWork($lastProof);
+        $blockHeader = "TEST";
+        $newProof = $this->proofOfWorkHandler->proofOfWork($lastProof, $blockHeader);
 
         $this->assertEquals(
           TRUE,

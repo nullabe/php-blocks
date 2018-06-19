@@ -5,9 +5,7 @@ namespace Nbe\PhpBlocks\Domain\Model\Handler\Contract;
 
 interface ProofOfWorkHandlerInterface
 {
-    public function proofOfWork(int $lastProof): int;
-
-    public function hashByTwoIntMultiplication(int $x, int $y): string;
+    public function proofOfWork(int $lastProof, string $blockHeader): int;
 
     public static function validateProof(string $hash): bool;
 

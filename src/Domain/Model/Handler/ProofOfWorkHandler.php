@@ -30,31 +30,32 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
 
     /**
      * @param integer $lastProof
+     * @param string $blockHeader
      * @return integer
      */
-    public function proofOfWork(int $lastProof): int
+    public function proofOfWork(int $lastProof, string $blockHeader): int
     {
         $proof = 0;
         $hash = "";
 
         while(!self::validateProof($hash)){
-            $hash = $this->hashByTwoIntMultiplication($lastProof, $proof++);
+            $hash = $this->generateHash($lastProof, $proof++, $blockHeader);
         }
 
         return $proof;
     }
 
     /**
-     * @param integer $x
-     * @param integer $y
+     * @param integer $lastProof
+     * @param string $blockHeader
      * @return string
      */
-    public function hashByTwoIntMultiplication(int $x, int $y): string
+    private function generateHash(int $lastProof, int $currentProof, string $blockHeader): string
     {
-        $result = $x * $y;
-        $encodedString = base64_encode((string)$result);
+        $result = (string) $currentProof . (string) $lastProof . $blockHeader;
+        $encodedString = base64_encode($result);
 
-        return hash(Hash::ALGO, $encodedString);
+        return hash(Hash::ALGO, hash(Hash::ALGO, $encodedString));
     }
 
     /**
