@@ -44,8 +44,7 @@ final class Blockchain
         $this->chain = [];
         $this->transactionStack = [];
 
-        $genesisBlock = new Block(GenesisBlock::INDEX, $this->transactionStack, GenesisBlock::PROOF, GenesisBlock::PREVIOUS_HASH);
-        $genesisBlock = $genesisBlock->setHash(GenesisBlock::HASH);
+        $genesisBlock = new Block(GenesisBlock::INDEX, $this->transactionStack, GenesisBlock::PREVIOUS_HASH);
 
         $this->appendBlockToChain($genesisBlock);
     }

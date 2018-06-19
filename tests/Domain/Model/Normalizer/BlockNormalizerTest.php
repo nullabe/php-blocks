@@ -16,9 +16,8 @@ final class BlockNormalizerTest extends TestCase
 {
     public function testBlockCanBeNormalized()
     {
-        $block = new Block(1, [], 100, "");
-
-        $block->setHash(BlockHashHandler::hashBlock($block));
+        $block = new Block(1, [], 100);
+        $block = BlockHashHandler::hashBlock($block);
 
         $this->assertEquals(
             [
@@ -38,9 +37,8 @@ final class BlockNormalizerTest extends TestCase
         $transactionFactory = new TransactionFactory();
         $transaction = $transactionFactory('sender', 'receiver', 0);
 
-        $block = new Block(1, [$transaction], 100, "");
-
-        $block->setHash(BlockHashHandler::hashBlock($block));
+        $block = new Block(1, [$transaction], 100);
+        $block = BlockHashHandler::hashBlock($block);
 
         $this->assertEquals(
             [

@@ -34,9 +34,8 @@ final class BlockHandler implements BlockHandlerInterface
     {
         $previousHash = $previousHash ?? $this->blockchain->getLastBlock()->getHash();
 
-        $block = new Block($this->blockchain->getNextIndex(), $this->blockchain->getTransactionStack(), $proof, $previousHash);
-        
-        $block = $block->setHash(BlockHashHandler::hashBlock($block));
+        $block = new Block($this->blockchain->getNextIndex(), $this->blockchain->getTransactionStack(), $previousHash);
+        $block = BlockHashHandler::hashBlock($block);
 
         $this->blockchain->appendBlockToChain($block);
         $this->blockchain->resetTransactionStack();

@@ -7,6 +7,6 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Block;
 
 interface BlockHashHandlerInterface
 {
-    static function hashBlock(Block $block): string;
+    static function hashBlock(Block $block): Block;
 
 }

@@ -3,10 +3,11 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Handler;
 
-use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
-use Nbe\PhpBlocks\Domain\Model\Handler\Contract\ProofOfWorkHandlerInterface;
 use Nbe\PhpBlocks\Domain\Config\Hash;
 use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
+use Nbe\PhpBlocks\Domain\Model\Entity\Block;
+use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
+use Nbe\PhpBlocks\Domain\Model\Handler\Contract\ProofOfWorkHandlerInterface;
 
 /**
  * ProofOfWorkHandler class
@@ -14,18 +15,16 @@ use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
 class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
 {
     /**
-     * @var Blockchain
+     * @var string
      */
-    private $blockchain;
+    private $generatedHash = "";
 
     /**
-     * Constructor
-     * 
-     * @param Blockchain $blockchain
+     * @return string
      */
-    public function __construct(Blockchain $blockchain)
+    public function getGeneratedHash(): string
     {
-        $this->blockchain = $blockchain;
+        return $this->generatedHash;
     }
 
     /**
@@ -36,10 +35,9 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
     public function proofOfWork(int $lastProof, string $blockHeader): int
     {
         $proof = 0;
-        $hash = "";
 
-        while(!self::validateProof($hash)){
-            $hash = $this->generateHash($lastProof, $proof++, $blockHeader);
+        while(!self::validateProof($this->generatedHash)){
+            $this->generatedHash = $this->generateHash($lastProof, $proof++, $blockHeader);
         }
 
         return $proof;

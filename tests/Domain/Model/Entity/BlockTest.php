@@ -5,6 +5,7 @@ namespace Nbe\PhpBlocks\Tests\Domain\Model\Entity;
 
 use PHPUnit\Framework\TestCase;
 use Nbe\PhpBlocks\Domain\Model\Entity\Block;
+use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
 use Nbe\PhpBlocks\Domain\Model\Handler\BlockHashHandler;
 
 /**
@@ -16,13 +17,13 @@ final class BlockTest extends TestCase
     {
         $this->assertInstanceOf(
           Block::class,
-          new Block(1, [], 100, "")
+          new Block(1, [], "")
         );
     }
 
     public function testCanGetIndexOfBlock(): void
     {
-        $block = new Block(1, [], 100, "");
+        $block = new Block(1, [], "");
         $this->assertEquals(
           1,
           $block->getIndex()
@@ -31,7 +32,7 @@ final class BlockTest extends TestCase
 
     public function testCanGetTimestampOfBlock(): void
     {
-        $block = new Block(1, [], 100, "");
+        $block = new Block(1, [], "");
 
         $this->assertEquals(
           TRUE,
@@ -41,7 +42,7 @@ final class BlockTest extends TestCase
 
     public function testCanGetTransactionsOfBlock(): void
     {
-        $block = new Block(1, [], 100, "");
+        $block = new Block(1, [], "");
 
         $this->assertEquals(
           [],
@@ -51,17 +52,28 @@ final class BlockTest extends TestCase
 
     public function testCanGetProofOfBlock(): void
     {
-        $block = new Block(1, [], 100, "");
+        $block = new Block(1, [], "");
 
         $this->assertEquals(
-          100,
+          GenesisBlock::PROOF,
+          $block->getProof()
+        );
+    }
+
+    public function testCanSetProofOfBlock(): void
+    {
+        $block = new Block(1, [], "");
+        $block->setProof(1000);
+
+        $this->assertEquals(
+          1000,
           $block->getProof()
         );
     }
 
     public function testCanGetPreviousHashOfBlock(): void
     {
-        $block = new Block(1, [], 100, "azerty");
+        $block = new Block(1, [], "azerty");
 
         $this->assertEquals(
           "azerty",
@@ -71,19 +83,12 @@ final class BlockTest extends TestCase
 
     public function testCanGetHashOfBlock(): void
     {
-        $block = new Block(1, [], 100, "");
-        
-        $blockHash = BlockHashHandler::hashBlock($block);
-        $block->setHash($blockHash);
+        $block = new Block(1, [], "");
 
-        $this->assertEquals(
-            $blockHash,
-            BlockHashHandler::hashBlock($block)
-        );
-        $this->assertEquals(
-            $blockHash,
-            $block->getHash()
-        );
+        $block = BlockHashHandler::hashBlock($block);
+
+        $this->assertTrue(\is_string($block->getHash()));
+        $this->assertTrue(GenesisBlock::HASH !== $block->getHash());
     }
 
 }

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
+use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
+
 /**
  * Block class
  */
@@ -26,12 +28,12 @@ final class Block
     /**
      * @var int
      */
-    private $proof;
+    private $proof = GenesisBlock::PROOF;
 
     /**
      * @var string
      */
-    private $hash;
+    private $hash = GenesisBlock::HASH;
 
     /**
      * @var string
@@ -46,15 +48,13 @@ final class Block
      * @param integer $proof
      * @param string $previousHash
      */
-    public function __construct(int $index, array $transactions, int $proof, string $previousHash)
+    public function __construct(int $index, array $transactions, string $previousHash)
     {
         $this->index = $index;
         $this->transactions = $transactions;
-        $this->proof = $proof;
         $this->previousHash = $previousHash;
 
         $this->timestamp = microtime(TRUE);
-        $this->hash = '';
     }
 
     /**
@@ -87,6 +87,17 @@ final class Block
     public function getProof(): int
     {
         return $this->proof;
+    }
+
+    /**
+     * @param integer $proof
+     * @return Block
+     */
+    public function setProof(int $proof): Block
+    {
+        $this->proof = $proof;
+
+        return $this;
     }
 
     /**
