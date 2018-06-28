@@ -8,9 +8,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-final class MineBlockController extends Controller
+/**
+ * MineController class
+ */
+final class MineController extends Controller
 {
-    public function postAction(Request $request): JsonResponse
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getAction(Request $request): JsonResponse
     {
         if ($request->getMethod() !== Request::METHOD_GET) {
             return new JsonResponse([

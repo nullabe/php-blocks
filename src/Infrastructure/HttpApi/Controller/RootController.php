@@ -8,8 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * RootController class
+ */
 final class RootController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function indexAction(Request $request): JsonResponse
     {
         if ($request->getMethod() !== Request::METHOD_GET) {
@@ -30,7 +37,7 @@ final class RootController extends Controller
                         'params'             => [],
                     ],
                     '/mine'             => [
-                        'method'             => 'POST',
+                        'method'             => 'GET',
                         'description'        => 'Mine a new block',
                         'params'             => [],
                     ],

@@ -7,8 +7,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * BlockchainController class
+ */
 final class BlockchainController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function getAction(Request $request): JsonResponse
     {
         if ($request->getMethod() !== Request::METHOD_GET) {

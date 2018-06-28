@@ -8,7 +8,7 @@ transactions.new:
 
 mine:
     path: /mine
-    controller: Nbe\PhpBlocks\Infrastructure\HttpApi\Controller\MineBlockController::postAction
+    controller: Nbe\PhpBlocks\Infrastructure\HttpApi\Controller\MineController::getAction
 
 chain:
     path: /chain
