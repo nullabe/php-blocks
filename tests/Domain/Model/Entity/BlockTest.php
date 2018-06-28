@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Nbe\PhpBlocks\Tests\Domain\Model\Entity;
 
 use PHPUnit\Framework\TestCase;
+use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
 use Nbe\PhpBlocks\Domain\Model\Entity\Block;
 use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
 use Nbe\PhpBlocks\Domain\Model\Handler\BlockHashHandler;

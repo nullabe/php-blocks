@@ -3,12 +3,13 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
+use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
 use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
 
 /**
  * Block class
  */
-final class Block
+class Block
 {
     /**
      * @var int
@@ -54,7 +55,7 @@ final class Block
         $this->transactions = $transactions;
         $this->previousHash = $previousHash;
 
-        $this->timestamp = microtime(TRUE);
+        $this->timestamp = microtime(true);
     }
 
     /**
@@ -125,6 +126,14 @@ final class Block
     public function getPreviousHash(): string
     {
         return $this->previousHash;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHeader(): string
+    {
+        return (string) $this->getTimestamp() . $this->getIndex() . ProofOfWork::DIFFICULTY;
     }
 
 }

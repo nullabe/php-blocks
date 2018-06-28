@@ -6,7 +6,7 @@ namespace Nbe\PhpBlocks\Domain\Model\Entity;
 /**
  * Transaction class
  */
-final class Transaction
+class Transaction
 {
     /**
      * @var string

@@ -8,7 +8,7 @@ use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
 /**
  * Blockchain class
  */
-final class Blockchain
+class Blockchain
 {
     /**
      * Unique instance of the chain

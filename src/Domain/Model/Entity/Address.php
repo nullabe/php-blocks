@@ -6,7 +6,7 @@ namespace Nbe\PhpBlocks\Domain\Model\Entity;
 /**
  * Address class
  */
-final class Address
+class Address
 {
     /**
      * @var string

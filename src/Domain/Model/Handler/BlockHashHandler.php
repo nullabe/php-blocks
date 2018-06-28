@@ -24,7 +24,7 @@ final class BlockHashHandler implements BlockHashHandlerInterface
         $blockchain = Blockchain::getInstance();
         $proofOfWorkHandler = new ProofOfWorkHandler();
 
-        $blockHeader = (string) $block->getTimestamp() . ProofOfWork::DIFFICULTY;
+        $blockHeader = $block->getHeader();
 
         $block = $block->setProof($proofOfWorkHandler->proofOfWork($blockchain->getLastBlock()->getProof(), $blockHeader));
         $block = $block->setHash($proofOfWorkHandler->getGeneratedHash());
