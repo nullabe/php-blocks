@@ -5,5 +5,12 @@
 composer.lock
 vendor
 
-### php-blocks template
+### PhpBlocks template
 blocks.chain
+
+### Symfony4 template
+/.env
+/public/bundles/
+/var/
+/vendor/
+
