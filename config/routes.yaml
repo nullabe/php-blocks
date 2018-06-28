@@ -1,3 +1,15 @@
 index:
-   path: /
-   controller: Nbe\PhpBlocks\Infrastructure\HttpApi\Controller\RootController::indexAction
+    path: /
+    controller: Nbe\PhpBlocks\Infrastructure\HttpApi\Controller\RootController::indexAction
+
+transactions.new:
+    path: /transactions/new
+    controller: Nbe\PhpBlocks\Infrastructure\HttpApi\Controller\TransactionController::postAction
+
+mine:
+    path: /mine
+    controller: Nbe\PhpBlocks\Infrastructure\HttpApi\Controller\MineBlockController::postAction
+
+chain:
+    path: /chain
+    controller: Nbe\PhpBlocks\Infrastructure\HttpApi\Controller\BlockchainController::getAction
