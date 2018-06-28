@@ -13,8 +13,8 @@ interface MineBlockInterface
     /**
      * POST Method, mine new Block.
      *
-     * @return Block
+     * @return mixed
      */
-    public function post(): Block;
+    public function postAction();
 
 }

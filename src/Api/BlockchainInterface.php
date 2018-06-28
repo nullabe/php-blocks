@@ -6,15 +6,15 @@ namespace Nbe\PhpBlocks\Api;
 use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 
 /**
- * BlockhainInterface interface
+ * BlockchainInterface interface
  */
-interface BlockhainInterface
+interface BlockchainInterface
 {
     /**
      * GET method, return current Blockhain.
      *
-     * @return Blockchain
+     * @return mixed
      */
-    public function get(): Blockchain;
+    public function getAction();
 
 }

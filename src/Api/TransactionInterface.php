@@ -13,8 +13,8 @@ interface TransactionInterface
     /**
      * Post Method, create new Transaction.
      *
-     * @return Transaction
+     * @return mixed
      */
-    public function post(): Transaction;
+    public function postAction();
 
 }
