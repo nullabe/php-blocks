@@ -39,7 +39,7 @@ final class RootController extends Controller
                     '/mine'             => [
                         'method'             => 'GET',
                         'description'        => 'Mine a new block',
-                        'params'             => [],
+                        'params'             => null,
                     ],
                     '/chain'            => [
                         'method'             => 'GET',
