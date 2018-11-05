@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
 /**
- * Address class
+ * Class Address
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Entity
  */
 class Address
 {
@@ -14,7 +16,7 @@ class Address
     private $hash;
 
     /**
-     * Constructor
+     * Address constructor.
      *
      * @param string $hash
      */

@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
 /**
- * Transaction class
+ * Class Transaction
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Entity
  */
 class Transaction
 {
@@ -34,10 +36,10 @@ class Transaction
     private $timestamp;
 
     /**
-     * Custructor
+     * Transaction constructor.
      *
-     * @param Address $sender
-     * @param Address $receiver
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Address $sender
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Address $receiver
      * @param float $amount
      */
     public function __construct(Address $sender, Address $receiver, float $amount)
@@ -51,7 +53,7 @@ class Transaction
     }
 
     /**
-     * @return Address
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Address
      */
     public function getSender(): Address
     {
@@ -59,7 +61,7 @@ class Transaction
     }
 
     /**
-     * @return Address
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Address
      */
     public function getReceiver(): Address
     {
@@ -92,7 +94,8 @@ class Transaction
 
     /**
      * @param string $hash
-     * @return Transaction
+     *
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Transaction
      */
     public function setHash(string $hash): Transaction
     {

@@ -8,12 +8,16 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Transaction;
 use Nbe\PhpBlocks\Domain\Model\Normalizer\TransactionNormalizer;
 
 /**
- * BlockNormalizer class
+ * Class BlockNormalizer
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Normalizer
  */
 final class BlockNormalizer
 {
+
     /**
-     * @param Block $block
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Block $block
+     *
      * @return array
      */
     public static function normalize(Block $block): array

@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Nbe\PhpBlocks\Domain\Config;
 
 /**
- * Hash class
+ * Class Hash
+ *
+ * @package Nbe\PhpBlocks\Domain\Config
  */
 final class Hash
 {

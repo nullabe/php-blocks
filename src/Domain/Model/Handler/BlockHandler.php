@@ -8,17 +8,22 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\BlockHandlerInterface;
 
 /**
- * Block class
+ * Class BlockHandler
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Handler
  */
 final class BlockHandler implements BlockHandlerInterface
 {
+
     /**
-     * @var Blockchain
+     * @var \Nbe\PhpBlocks\Domain\Model\Entity\Blockchain
      */
     private $blockchain;
 
     /**
-     * @param Blockchain $blockchain
+     * BlockHandler constructor.
+     *
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Blockchain $blockchain
      */
     public function __construct(Blockchain $blockchain)
     {
@@ -26,9 +31,10 @@ final class BlockHandler implements BlockHandlerInterface
     }
 
     /**
-     * @param integer $proof
-     * @param string $previousHash
-     * @return Block
+     * @param int $proof
+     * @param string|null $previousHash
+     *
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Block
      */
     public function addNewBlockToChain(int $proof, string $previousHash = NULL): Block
     {

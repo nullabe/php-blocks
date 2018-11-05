@@ -6,12 +6,16 @@ namespace Nbe\PhpBlocks\Domain\Model\Normalizer;
 use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 
 /**
- * BlockchainNormalizer class
+ * Class BlockchainNormalizer
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Normalizer
  */
 final class BlockchainNormalizer
 {
+
     /**
-     * @param Blockchain $blockchain
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Blockchain $blockchain
+     *
      * @return array
      */
     public static function normalize(Blockchain $blockchain): array

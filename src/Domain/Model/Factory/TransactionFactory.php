@@ -7,15 +7,19 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Address;
 use Nbe\PhpBlocks\Domain\Model\Entity\Transaction;
 
 /**
- * TransactionFactory class
+ * Class TransactionFactory
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Factory
  */
 final class TransactionFactory
 {
+
     /**
      * @param string $sender_hash
      * @param string $receiver_hash
      * @param float $amount
-     * @return Transaction
+     *
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Transaction
      */
     public function __invoke(string $sender_hash, string $receiver_hash, float $amount): Transaction
     {

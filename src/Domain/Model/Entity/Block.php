@@ -7,7 +7,9 @@ use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
 use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
 
 /**
- * Block class
+ * Class Block
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Entity
  */
 class Block
 {
@@ -46,7 +48,6 @@ class Block
      *
      * @param integer $index
      * @param array $transactions
-     * @param integer $proof
      * @param string $previousHash
      */
     public function __construct(int $index, array $transactions, string $previousHash)
@@ -91,8 +92,9 @@ class Block
     }
 
     /**
-     * @param integer $proof
-     * @return Block
+     * @param int $proof
+     *
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Block
      */
     public function setProof(int $proof): Block
     {
@@ -111,7 +113,8 @@ class Block
 
     /**
      * @param string $hash
-     * @return Block
+     *
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Block
      */
     public function setHash(string $hash): Block
     {

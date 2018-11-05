@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Nbe\PhpBlocks\Domain\Config;
 
 /**
- * GenesisBlock class
+ * Class GenesisBlock
+ *
+ * @package Nbe\PhpBlocks\Domain\Config
  */
 final class GenesisBlock
 {

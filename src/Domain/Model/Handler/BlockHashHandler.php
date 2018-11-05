@@ -11,13 +11,17 @@ use Nbe\PhpBlocks\Domain\Model\Handler\ProofOfWorkHandler;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\BlockHashHandlerInterface;
 
 /**
- * BlockHashHandler class
+ * Class BlockHashHandler
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Handler
  */
 final class BlockHashHandler implements BlockHashHandlerInterface
 {
+
     /**
-     * @param Block $block
-     * @return Block
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Block $block
+     *
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Block
      */
     public static function hashBlock(Block $block): Block
     {

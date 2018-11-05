@@ -10,7 +10,9 @@ use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\ProofOfWorkHandlerInterface;
 
 /**
- * ProofOfWorkHandler class
+ * Class ProofOfWorkHandler
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Handler
  */
 class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
 {
@@ -28,9 +30,10 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
     }
 
     /**
-     * @param integer $lastProof
+     * @param int $lastProof
      * @param string $blockHeader
-     * @return integer
+     *
+     * @return int
      */
     public function proofOfWork(int $lastProof, string $blockHeader): int
     {
@@ -44,8 +47,10 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
     }
 
     /**
-     * @param integer $lastProof
+     * @param int $lastProof
+     * @param int $currentProof
      * @param string $blockHeader
+     *
      * @return string
      */
     private function generateHash(int $lastProof, int $currentProof, string $blockHeader): string
@@ -58,7 +63,8 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
 
     /**
      * @param string $hash
-     * @return boolean
+     *
+     * @return bool
      */
     public static function validateProof(string $hash): bool
     {

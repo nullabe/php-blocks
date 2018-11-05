@@ -6,12 +6,16 @@ namespace Nbe\PhpBlocks\Domain\Model\Normalizer;
 use Nbe\PhpBlocks\Domain\Model\Entity\Transaction;
 
 /**
- * TransactionNormalizer class
+ * Class TransactionNormalizer
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Normalizer
  */
 final class TransactionNormalizer
 {
+
     /**
-     * @param Transaction $transaction
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Transaction $transaction
+     *
      * @return array
      */
     public static function normalize(Transaction $transaction): array

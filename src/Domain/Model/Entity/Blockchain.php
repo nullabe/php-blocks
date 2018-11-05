@@ -6,7 +6,9 @@ namespace Nbe\PhpBlocks\Domain\Model\Entity;
 use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
 
 /**
- * Blockchain class
+ * Class Blockchain
+ *
+ * @package Nbe\PhpBlocks\Domain\Model\Entity
  */
 class Blockchain
 {
@@ -37,7 +39,7 @@ class Blockchain
     private $lastBlock;
 
     /**
-     * Constructor
+     * Blockchain constructor.
      */
     private function __construct()
     {
@@ -50,9 +52,7 @@ class Blockchain
     }
 
     /**
-     * Return unique blockchain's instance
-     * 
-     * @return Blockchain
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Blockchain
      */
     public static function getInstance(): Blockchain
     {
@@ -80,7 +80,7 @@ class Blockchain
     }
 
     /**
-     * @return Block
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Block
      */
     public function getLastBlock(): Block
     {
@@ -88,8 +88,9 @@ class Blockchain
     }
 
     /**
-     * @param Block $block
-     * @return Block
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Block $block
+     *
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Block
      */
     public function appendBlockToChain(Block $block): Block
     {
@@ -102,8 +103,9 @@ class Blockchain
     }
 
     /**
-     * @param Transaction $transaction
-     * @return Transaction
+     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Transaction $transaction
+     *
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Transaction
      */
     public function appendTransactionToStack(Transaction $transaction): Transaction
     {
@@ -113,7 +115,7 @@ class Blockchain
     }
 
     /**
-     * @return Blockchain
+     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Blockchain
      */
     public function resetTransactionStack(): Blockchain
     {
