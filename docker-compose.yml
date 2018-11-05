@@ -15,7 +15,7 @@ services:
     container_name: phpblocks_api
     build:
       context: .
-      dockerfile: ./config/docker/php/Dockerfile
+      dockerfile: config/docker/php/Dockerfile
       args:
         - UID=1000
         - GID=1000

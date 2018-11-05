@@ -9,13 +9,17 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * MineController class
+ * Class MineController
+ *
+ * @package Nbe\PhpBlocks\Infrastructure\HttpApi\Controller
  */
 final class MineController extends Controller
 {
+
     /**
-     * @param Request $request
-     * @return JsonResponse
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function getAction(Request $request): JsonResponse
     {

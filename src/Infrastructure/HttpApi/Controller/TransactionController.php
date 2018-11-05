@@ -9,13 +9,17 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * TransactionController class
+ * Class TransactionController
+ *
+ * @package Nbe\PhpBlocks\Infrastructure\HttpApi\Controller
  */
 final class TransactionController extends Controller
 {
+
     /**
-     * @param Request $request
-     * @return JsonResponse
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function postAction(Request $request): JsonResponse
     {

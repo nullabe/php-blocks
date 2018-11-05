@@ -9,13 +9,17 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * RootController class
+ * Class RootController
+ *
+ * @package Nbe\PhpBlocks\Infrastructure\HttpApi\Controller
  */
 final class RootController extends Controller
 {
+
     /**
-     * @param Request $request
-     * @return JsonResponse
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function indexAction(Request $request): JsonResponse
     {
@@ -50,5 +54,5 @@ final class RootController extends Controller
             ],
         ]);
     }
-    
+
 }

@@ -6,15 +6,20 @@ namespace Nbe\PhpBlocks\Infrastructure\HttpApi\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
- * BlockchainController class
+ * Class BlockchainController
+ *
+ * @package Nbe\PhpBlocks\Infrastructure\HttpApi\Controller
  */
 final class BlockchainController extends Controller
 {
+
     /**
-     * @param Request $request
-     * @return JsonResponse
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function getAction(Request $request): JsonResponse
     {
