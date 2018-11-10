@@ -25,8 +25,10 @@ final class BlockchainNormalizer
         }
 
         return [
+            'uuid' => $blockchain->uuid(),
+            'chain' => $blocks ?? [],
+            'lastBlock' => BlockNormalizer::normalize($blockchain->getLastBlock()),
             'length' => $blockchain->getNextIndex() - 1,
-            'chain'  => $blocks ?? [],
         ];
     }
 
