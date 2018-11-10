@@ -20,7 +20,7 @@ final class BlockchainNormalizerTest extends TestCase
         foreach ($blockchain->getChain() as $index => $block) {
             $blocks[] = BlockNormalizer::normalize($block);
         }
-        
+
         $this->assertEquals(
             [
                 'uuid' => $blockchain->uuid(),

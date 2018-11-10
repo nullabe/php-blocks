@@ -53,4 +53,24 @@ final class BlockNormalizerTest extends TestCase
         );
     }
 
+    /**
+     * @throws \Nbe\PhpBlocks\Domain\Exception\BlockDenormalizeException
+     * @throws \Nbe\PhpBlocks\Domain\Exception\TransactionDenormalizeException
+     */
+    public function testBlockCanBeDenormalizedWithTransactions()
+    {
+        $transactionFactory = new TransactionFactory();
+        $transaction = $transactionFactory('sender', 'receiver', 0);
+
+        $block = new Block(1, [$transaction], "TEST");
+        $block = BlockHashHandler::hashBlock($block);
+
+        $blockData = BlockNormalizer::normalize($block);
+
+        $this->assertEquals(
+            $block,
+            BlockNormalizer::denormalize($blockData)
+        );
+    }
+
 }

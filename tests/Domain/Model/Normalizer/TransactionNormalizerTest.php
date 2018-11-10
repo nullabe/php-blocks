@@ -20,9 +20,11 @@ final class TransactionNormalizerTest extends TestCase
 
         $this->assertEquals(
             [
-                'sender'    => $transaction->getSender()->getHash(),
-                'receiver'  => $transaction->getReceiver()->getHash(),
-                'amount'    => $transaction->getAmount(),
+                'sender' => $transaction->getSender()->getHash(),
+                'receiver' => $transaction->getReceiver()->getHash(),
+                'amount' => $transaction->getAmount(),
+                'timestamp' => $transaction->getTimestamp(),
+                'hash' => $transaction->getHash(),
             ],
             TransactionNormalizer::normalize($transaction)
         );
