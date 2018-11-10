@@ -13,8 +13,6 @@ use Nbe\PhpBlocks\Domain\Model\Repository\Contract\BlockchainRepository;
 class BlockchainFileRepository implements BlockchainRepository
 {
 
-    const PATH_TO_FILE = '../../../../../blockchain.json';
-
     /**
      * @param Blockchain $blockchain
      * @return bool
