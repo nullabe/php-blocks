@@ -20,13 +20,17 @@ final class BlockchainNormalizer
      */
     public static function normalize(Blockchain $blockchain): array
     {
-        foreach ($blockchain->getChain() as $index => $block) {
+        foreach ($blockchain->getChain() as $block) {
             $blocks[] = BlockNormalizer::normalize($block);
+        }
+        foreach ($blockchain->getTransactionStack() as $transaction) {
+            $transactions[] = TransactionNormalizer::normalize($transaction);
         }
 
         return [
             'uuid' => $blockchain->uuid(),
             'chain' => $blocks ?? [],
+            'transactionStack' => $transactions ?? [],
             'lastBlock' => BlockNormalizer::normalize($blockchain->getLastBlock()),
             'length' => $blockchain->getNextIndex() - 1,
         ];

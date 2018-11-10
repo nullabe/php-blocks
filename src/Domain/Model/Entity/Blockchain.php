@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
 use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
+use Nbe\PhpBlocks\Domain\Model\Normalizer\BlockNormalizer;
+use Nbe\PhpBlocks\Domain\Model\Normalizer\TransactionNormalizer;
 use Nbe\PhpBlocks\Domain\Model\State\BlockchainState;
 use Nbe\PhpBlocks\Domain\Model\ValueObject\Uuid;
 
@@ -57,13 +59,15 @@ class Blockchain
     }
 
     /**
-     * @param BlockchainState $state
+     * @param BlockchainState|null $state
      * @return Blockchain
+     * @throws \Nbe\PhpBlocks\Domain\Exception\BlockDenormalizeException
+     * @throws \Nbe\PhpBlocks\Domain\Exception\TransactionDenormalizeException
      */
     public static function getInstance(BlockchainState $state = null): Blockchain
     {
         if (isset($state)) {
-            self::$instance = self::buildInstanceFromState($state);
+            self::$instance = self::buildInstanceFromState($state->getState());
         }
 
         if(!isset(self::$instance)) {
@@ -74,16 +78,28 @@ class Blockchain
     }
 
     /**
-     * @param BlockchainState $state
+     * @param array $state
      * @return Blockchain
+     * @throws \Nbe\PhpBlocks\Domain\Exception\BlockDenormalizeException
+     * @throws \Nbe\PhpBlocks\Domain\Exception\TransactionDenormalizeException
      */
-    private static function buildInstanceFromState(BlockchainState $state): Blockchain
+    private static function buildInstanceFromState(array $state): Blockchain
     {
         $blockchain = new self();
 
-        $blockchain->chain = $state['chain'];
+        foreach ($state['chain'] as $block) {
+            $chain[] = BlockNormalizer::denormalize($block);
+        }
+        foreach ($state['transactionStack'] as $transaction) {
+            $transactions[] = TransactionNormalizer::denormalize($transaction);
+        }
+
         $blockchain->uuid = $state['uuid'];
-        $blockchain->lastBlock = end($state['uuid']);
+        $blockchain->chain = $chain ?? [];
+        $blockchain->transactionStack = $transactions ?? [];
+        $blockchain->lastBlock = BlockNormalizer::denormalize($state['lastBlock']);
+
+        return $blockchain;
     }
 
     /**

@@ -17,9 +17,17 @@ class BlockchainState
      * @return BlockchainState
      * @throws BuildBlockchainStateException
      */
-    public function __invoke(array $blockchain)
+    public function __construct(array $blockchain)
     {
-        return (new self())->setState($blockchain);
+        return $this->setState($blockchain);
+    }
+
+    /**
+     * @return array
+     */
+    public function getState(): array
+    {
+        return $this->state;
     }
 
     /**
@@ -43,6 +51,7 @@ class BlockchainState
     {
         if (!key_exists('uuid', $blockchain)
         || !key_exists('chain', $blockchain)
+        || !key_exists('transactionStack', $blockchain)
         || !key_exists('lastBlock', $blockchain)
         || !key_exists('length', $blockchain)
         ) {
