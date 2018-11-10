@@ -38,6 +38,8 @@ final class BlockchainTest extends TestCase
 
     public function testChainContainGenesisBlockAtInit(): void
     {
+        $this->assertEquals(1, count($this->blockchain->getChain()));
+
         $this->assertInstanceOf(Block::class, $this->blockchain->getChain()[0]);
     }
 
