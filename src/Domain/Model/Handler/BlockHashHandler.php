@@ -3,11 +3,8 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Handler;
 
-use Nbe\PhpBlocks\Domain\Config\Hash;
-use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
 use Nbe\PhpBlocks\Domain\Model\Entity\Block;
 use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
-use Nbe\PhpBlocks\Domain\Model\Handler\ProofOfWorkHandler;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\BlockHashHandlerInterface;
 
 /**

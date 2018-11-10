@@ -18,15 +18,16 @@ final class TransactionFactory
      * @param string $sender_hash
      * @param string $receiver_hash
      * @param float $amount
+     * @param float|null $timestamp
      *
-     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Transaction
+     * @return Transaction
      */
-    public function __invoke(string $sender_hash, string $receiver_hash, float $amount): Transaction
+    public function __invoke(string $sender_hash, string $receiver_hash, float $amount, float $timestamp = null): Transaction
     {
         $sender = new Address($sender_hash);
         $receiver = new Address($receiver_hash);
 
-        return new Transaction($sender, $receiver, $amount);
+        return new Transaction($sender, $receiver, $amount, $timestamp);
     }
 
 }

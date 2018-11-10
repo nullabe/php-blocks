@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
+use Nbe\PhpBlocks\Domain\Config\Hash;
+
 /**
  * Class Transaction
  *
@@ -13,7 +15,7 @@ class Transaction
     /**
      * @var string
      */
-    private $hash; 
+    private $hash;
 
     /**
      * @var Address
@@ -37,19 +39,20 @@ class Transaction
 
     /**
      * Transaction constructor.
-     *
-     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Address $sender
-     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Address $receiver
+     * @param Address $sender
+     * @param Address $receiver
      * @param float $amount
+     * @param float $timestamp
      */
-    public function __construct(Address $sender, Address $receiver, float $amount)
+    public function __construct(Address $sender, Address $receiver, float $amount, float $timestamp = null)
     {
         $this->sender = $sender;
         $this->receiver = $receiver;
         $this->amount = $amount;
 
-        $this->timestamp = microtime(TRUE);
-        $this->hash = null;
+        $this->timestamp = $timestamp ?? microtime(true);
+
+        $this->hash = \hash(Hash::ALGO, microtime() . $timestamp . $sender->getHash() . $receiver->getHash() . $amount);
     }
 
     /**

@@ -44,19 +44,19 @@ class Block
     private $previousHash;
 
     /**
-     * Constructor
-     *
-     * @param integer $index
+     * Block constructor.
+     * @param int $index
      * @param array $transactions
      * @param string $previousHash
+     * @param float|null $timestamp
      */
-    public function __construct(int $index, array $transactions, string $previousHash)
+    public function __construct(int $index, array $transactions, string $previousHash, float $timestamp = null)
     {
         $this->index = $index;
         $this->transactions = $transactions;
         $this->previousHash = $previousHash;
 
-        $this->timestamp = microtime(true);
+        $this->timestamp = $timestamp ?? microtime(true);
     }
 
     /**
@@ -136,7 +136,7 @@ class Block
      */
     public function getHeader(): string
     {
-        return (string) $this->getTimestamp() . $this->getIndex() . ProofOfWork::DIFFICULTY;
+        return (string)$this->getTimestamp() . $this->getIndex() . ProofOfWork::DIFFICULTY;
     }
 
 }
