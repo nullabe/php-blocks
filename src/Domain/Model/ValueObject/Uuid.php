@@ -21,13 +21,13 @@ trait Uuid
      */
     public function uuid(): string
     {
-        return $this->uuid ?? $this->uuid = \hash(Hash::ALGO, microtime() . $this->getRandom());
+        return $this->uuid ?? $this->uuid = $this->generateUuid();
     }
 
     /**
      * @return string
      */
-    private function getRandom(): string
+    private function generateUuid(): string
     {
         try {
             $random = random_bytes(Hash::UUID_LGT_BYTES);
@@ -35,7 +35,7 @@ trait Uuid
             $random = uniqid(mt_rand(), true);
         }
 
-        return \hash(Hash::ALGO, $random);
+        return \hash(Hash::ALGO, microtime() . $random);
     }
 
 }
