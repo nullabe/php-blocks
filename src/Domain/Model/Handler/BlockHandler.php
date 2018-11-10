@@ -33,10 +33,11 @@ final class BlockHandler implements BlockHandlerInterface
     /**
      * @param int $proof
      * @param string|null $previousHash
-     *
-     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Block
+     * @return Block
+     * @throws \Nbe\PhpBlocks\Domain\Exception\BlockDenormalizeException
+     * @throws \Nbe\PhpBlocks\Domain\Exception\TransactionDenormalizeException
      */
-    public function addNewBlockToChain(int $proof, string $previousHash = NULL): Block
+    public function addNewBlockToChain(int $proof, string $previousHash = null): Block
     {
         $previousHash = $previousHash ?? $this->blockchain->getLastBlock()->getHash();
 

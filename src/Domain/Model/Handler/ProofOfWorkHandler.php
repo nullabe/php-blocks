@@ -5,8 +5,6 @@ namespace Nbe\PhpBlocks\Domain\Model\Handler;
 
 use Nbe\PhpBlocks\Domain\Config\Hash;
 use Nbe\PhpBlocks\Domain\Config\ProofOfWork;
-use Nbe\PhpBlocks\Domain\Model\Entity\Block;
-use Nbe\PhpBlocks\Domain\Model\Entity\Blockchain;
 use Nbe\PhpBlocks\Domain\Model\Handler\Contract\ProofOfWorkHandlerInterface;
 
 /**
@@ -39,7 +37,7 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
     {
         $proof = 0;
 
-        while(!self::validateProof($this->generatedHash)){
+        while (!self::validateProof($this->generatedHash)) {
             $this->generatedHash = $this->generateHash($lastProof, $proof++, $blockHeader);
         }
 
@@ -55,7 +53,7 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
      */
     private function generateHash(int $lastProof, int $currentProof, string $blockHeader): string
     {
-        $result = (string) $currentProof . (string) $lastProof . $blockHeader;
+        $result = (string)$currentProof . (string)$lastProof . $blockHeader;
         $encodedString = base64_encode($result);
 
         return hash(Hash::ALGO, hash(Hash::ALGO, $encodedString));
@@ -68,10 +66,11 @@ class ProofOfWorkHandler implements ProofOfWorkHandlerInterface
      */
     public static function validateProof(string $hash): bool
     {
-        $output = FALSE;
+        $output = false;
 
-        if (strpos($hash, ProofOfWork::DIFFICULTY) === 0)
-            $output = TRUE;
+        if (strpos($hash, ProofOfWork::DIFFICULTY) === 0) {
+            $output = true;
+        }
 
         return $output;
     }

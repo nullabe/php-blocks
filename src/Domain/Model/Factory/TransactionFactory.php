@@ -22,8 +22,12 @@ final class TransactionFactory
      *
      * @return Transaction
      */
-    public function __invoke(string $sender_hash, string $receiver_hash, float $amount, float $timestamp = null): Transaction
-    {
+    public function __invoke(
+        string $sender_hash,
+        string $receiver_hash,
+        float $amount,
+        float $timestamp = null
+    ): Transaction {
         $sender = new Address($sender_hash);
         $receiver = new Address($receiver_hash);
 

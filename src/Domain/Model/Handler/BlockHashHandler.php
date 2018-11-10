@@ -16,9 +16,10 @@ final class BlockHashHandler implements BlockHashHandlerInterface
 {
 
     /**
-     * @param \Nbe\PhpBlocks\Domain\Model\Entity\Block $block
-     *
-     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Block
+     * @param Block $block
+     * @return Block
+     * @throws \Nbe\PhpBlocks\Domain\Exception\BlockDenormalizeException
+     * @throws \Nbe\PhpBlocks\Domain\Exception\TransactionDenormalizeException
      */
     public static function hashBlock(Block $block): Block
     {
@@ -27,7 +28,8 @@ final class BlockHashHandler implements BlockHashHandlerInterface
 
         $blockHeader = $block->getHeader();
 
-        $block = $block->setProof($proofOfWorkHandler->proofOfWork($blockchain->getLastBlock()->getProof(), $blockHeader));
+        $block = $block->setProof($proofOfWorkHandler->proofOfWork($blockchain->getLastBlock()->getProof(),
+            $blockHeader));
         $block = $block->setHash($proofOfWorkHandler->getGeneratedHash());
 
         return $block;

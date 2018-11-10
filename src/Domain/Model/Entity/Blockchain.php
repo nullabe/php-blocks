@@ -20,14 +20,14 @@ class Blockchain
 
     /**
      * Unique instance of the chain
-     * 
+     *
      * @var Blockchain
      */
     private static $instance;
 
     /**
      * Collection of all blocks of the chain
-     * 
+     *
      * @var array
      */
     private $chain;
@@ -70,7 +70,7 @@ class Blockchain
             self::$instance = self::buildInstanceFromState($state->getState());
         }
 
-        if(!isset(self::$instance)) {
+        if (!isset(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -137,7 +137,7 @@ class Blockchain
             array_push($this->chain, $block);
             $this->lastBlock = $block;
         }
-        
+
         return $block;
     }
 

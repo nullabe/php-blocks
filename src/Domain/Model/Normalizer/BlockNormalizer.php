@@ -6,7 +6,6 @@ namespace Nbe\PhpBlocks\Domain\Model\Normalizer;
 use Nbe\PhpBlocks\Domain\Exception\BlockDenormalizeException;
 use Nbe\PhpBlocks\Domain\Model\Entity\Block;
 use Nbe\PhpBlocks\Domain\Model\Entity\Transaction;
-use Nbe\PhpBlocks\Domain\Model\Normalizer\TransactionNormalizer;
 
 /**
  * Class BlockNormalizer
@@ -32,12 +31,12 @@ final class BlockNormalizer
         }
 
         return [
-            'index'         => $block->getIndex(),
-            'timestamp'     => $block->getTimestamp(),
-            'transactions'  => $transactions ?? [],
-            'proof'         => $block->getProof(),
-            'hash'          => $block->getHash(), 
-            'previousHash'  => $block->getPreviousHash(),
+            'index' => $block->getIndex(),
+            'timestamp' => $block->getTimestamp(),
+            'transactions' => $transactions ?? [],
+            'proof' => $block->getProof(),
+            'hash' => $block->getHash(),
+            'previousHash' => $block->getPreviousHash(),
         ];
     }
 

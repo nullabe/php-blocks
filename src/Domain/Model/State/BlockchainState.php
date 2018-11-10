@@ -8,7 +8,7 @@ use Nbe\PhpBlocks\Domain\Exception\BuildBlockchainStateException;
 class BlockchainState
 {
     /**
-     * @var array $state ;
+     * @var array $state
      */
     private $state;
 
@@ -50,10 +50,10 @@ class BlockchainState
     private function verifyStructure(array $blockchain): array
     {
         if (!key_exists('uuid', $blockchain)
-        || !key_exists('chain', $blockchain)
-        || !key_exists('transactionStack', $blockchain)
-        || !key_exists('lastBlock', $blockchain)
-        || !key_exists('length', $blockchain)
+            || !key_exists('chain', $blockchain)
+            || !key_exists('transactionStack', $blockchain)
+            || !key_exists('lastBlock', $blockchain)
+            || !key_exists('length', $blockchain)
         ) {
             throw new BuildBlockchainStateException('Array is not valid');
         }

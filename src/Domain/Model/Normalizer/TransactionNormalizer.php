@@ -42,7 +42,8 @@ final class TransactionNormalizer
 
         $transactionFactory = new TransactionFactory();
 
-        $transaction = $transactionFactory($transactionData['sender'], $transactionData['receiver'], $transactionData['amount'], $transactionData['timestamp']);
+        $transaction = $transactionFactory($transactionData['sender'], $transactionData['receiver'],
+            $transactionData['amount'], $transactionData['timestamp']);
 
         return $transaction->setHash($transactionData['hash']);
     }
