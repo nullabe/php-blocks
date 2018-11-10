@@ -12,4 +12,6 @@ final class Hash
 {
     const ALGO = "sha256";
 
+    const UUID_LGT_BYTES = 32;
+
 }

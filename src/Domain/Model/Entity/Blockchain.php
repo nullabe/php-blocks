@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Nbe\PhpBlocks\Domain\Model\Entity;
 
 use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
+use Nbe\PhpBlocks\Domain\Model\State\BlockchainState;
+use Nbe\PhpBlocks\Domain\Model\ValueObject\Uuid;
 
 /**
  * Class Blockchain
@@ -12,6 +14,8 @@ use Nbe\PhpBlocks\Domain\Config\GenesisBlock;
  */
 class Blockchain
 {
+    use Uuid;
+
     /**
      * Unique instance of the chain
      * 
@@ -45,6 +49,7 @@ class Blockchain
     {
         $this->chain = [];
         $this->transactionStack = [];
+        $this->uuid();
 
         $genesisBlock = new Block(GenesisBlock::INDEX, $this->transactionStack, GenesisBlock::PREVIOUS_HASH);
 
@@ -52,15 +57,33 @@ class Blockchain
     }
 
     /**
-     * @return \Nbe\PhpBlocks\Domain\Model\Entity\Blockchain
+     * @param BlockchainState $state
+     * @return Blockchain
      */
-    public static function getInstance(): Blockchain
+    public static function getInstance(BlockchainState $state = null): Blockchain
     {
+        if (isset($state)) {
+            self::$instance = self::buildInstanceFromState($state);
+        }
+
         if(!isset(self::$instance)) {
             self::$instance = new self();
         }
 
         return self::$instance;
+    }
+
+    /**
+     * @param BlockchainState $state
+     * @return Blockchain
+     */
+    private static function buildInstanceFromState(BlockchainState $state): Blockchain
+    {
+        $blockchain = new self();
+
+        $blockchain->chain = $state['chain'];
+        $blockchain->uuid = $state['uuid'];
+        $blockchain->lastBlock = end($state['uuid']);
     }
 
     /**
