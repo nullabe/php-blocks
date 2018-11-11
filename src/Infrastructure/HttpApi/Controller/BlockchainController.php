@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Infrastructure\HttpApi\Controller;
 
-use Nbe\PhpBlocks\Domain\Model\Normalizer\BlockchainNormalizer;
-use Nbe\PhpBlocks\Domain\Model\State\BlockchainState;
-use Nbe\PhpBlocks\Infrastructure\Storage\File\Formatter\BlockchainJsonFormatter;
 use Nbe\PhpBlocks\Infrastructure\Storage\File\Repository\BlockchainFileRepository;
 use Nbe\PhpBlocks\Infrastructure\Strategy\Storage\StorageStrategy;
 use Symfony\Component\HttpFoundation\Request;

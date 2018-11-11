@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Nbe\PhpBlocks\Infrastructure\HttpApi\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class RootController
@@ -30,25 +30,29 @@ final class RootController extends Controller
         }
 
         return new JsonResponse([
-            'method'      => 'GET',
-            'title'       => 'PhpBlocks Http API',
+            'method' => 'GET',
+            'title' => 'PhpBlocks Http API',
             'description' => 'List of endpoints available, and how to use them',
-            'data'        => [
-                'endpoints'  => [
+            'data' => [
+                'endpoints' => [
                     '/transactions/new' => [
-                        'method'             => 'POST',
-                        'description'        => 'Create a new transaction',
-                        'params'             => [],
+                        'method' => 'POST',
+                        'description' => 'Create a new transaction',
+                        'params' => [
+                            'sender' => 'Sender address',
+                            'receiver' => 'Receiver address',
+                            'amount' => 'Amount of transaction',
+                        ],
                     ],
-                    '/mine'             => [
-                        'method'             => 'GET',
-                        'description'        => 'Mine a new block',
-                        'params'             => null,
+                    '/mine' => [
+                        'method' => 'GET',
+                        'description' => 'Mine a new block',
+                        'params' => null,
                     ],
-                    '/chain'            => [
-                        'method'             => 'GET',
-                        'description'        => 'Return the full Blockchain',
-                        'params'             => null,
+                    '/chain' => [
+                        'method' => 'GET',
+                        'description' => 'Return the full Blockchain',
+                        'params' => null,
                     ],
                 ],
             ],
