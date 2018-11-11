@@ -173,4 +173,12 @@ class Blockchain
         return $nextIndex;
     }
 
+    /**
+     * @return bool
+     */
+    public function isNew(): bool
+    {
+        return (count($this->getChain()) === 1);
+    }
+
 }
