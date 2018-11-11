@@ -18,5 +18,5 @@ interface BlockchainFormatter
      *
      * @return mixed
      */
-    public function format(Blockchain $blockchain);
+    public static function format(Blockchain $blockchain);
 }
